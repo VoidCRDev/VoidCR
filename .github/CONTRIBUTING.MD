@@ -13,7 +13,7 @@ VoidCR can be setup very easily by following the steps below
 
 1. Clone VoidCR repository
 2. create the folder assets in the VoidCR root project
-3. Inside of your new "assets" folder add the Cosmic-Reach-Server-%VERSION%.jar
+3. Inside of your new "assets" folder add the Cosmic-Reach-Server-%VERSION%.jar or run `./gradlew downloadCosmicReachServer`
 4. go back to the main VoidCR folder and run `./gradlew setup`
 5. you can run the void-server-VoidCR-all.jar with `java -jar void-server-VoidCR-all.jar`
 
