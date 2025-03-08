@@ -8,6 +8,7 @@ import sh.miles.voidcr.util.collection.exception.RegistryValueNotFoundException;
  * A registry which could, potentially be modified and is used to store items.
  *
  * @param <E> the registry value type
+ * @param <K> the key type
  * @since 0.3.14
  */
 public interface Registry<E extends KeyHolder<K>, K> extends Iterable<E> {

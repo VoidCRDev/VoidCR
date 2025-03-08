@@ -45,12 +45,14 @@ public interface CommandContext {
      * <p>
      * VoidCR provides some default types that can be parsed those are listed here, these are attempted last in the
      * chain of attempting to retrieve resolvable arguments so they can be overridden easily
+     * <ol>
      * <li>Double</li>
      * <li>Float</li>
      * <li>Integer</li>
      * <li>Long</li>
      * <li>PlayerEntity</li>
      * <li>String</li>
+     * </ol>
      * <p>
      * Not all types are allowed to be parsed by default. You as the API consumer can register these argument resolvers
      * by registering them with the valid lifecycle manager see

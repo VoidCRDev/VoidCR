@@ -65,6 +65,13 @@ public interface BlockPos extends IntPosition<BlockPos>, ByteSerializable {
         return VoidCR.getMagic().createBlockPos(x, y, z);
     }
 
+    /**
+     * Turns input bytes into a BlockPos
+     *
+     * @param input the input
+     * @return the block pos
+     * @since 0.3.27
+     */
     static BlockPos fromBytes(byte[] input) {
         return VoidCR.getMagic().deserialize(BlockPos.class, input);
     }

@@ -8,6 +8,11 @@ import sh.miles.voidcr.util.NamedKey;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * An interface represent block types
+ *
+ * @since 0.3.27
+ */
 public interface BlockType extends Keyed {
 
     BlockType AIR = block("air");

@@ -35,7 +35,7 @@ public interface DecimalPosition<T extends DecimalPosition<T>> {
     float z();
 
     /**
-     * Makes changes to the DecimalPosition raw values through an implementation of {@link TriplefloatFunction}. These
+     * Makes changes to the DecimalPosition raw values through an implementation of {@link TripleFloatFunction}. These
      * changes are applied to the returned DecimalPosition
      * <p>
      * This method should be used over {@link #add(float, float, float)}, {@link #subtract(float, float, float)} or any other
