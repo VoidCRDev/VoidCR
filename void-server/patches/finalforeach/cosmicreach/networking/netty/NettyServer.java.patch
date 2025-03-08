@@ -22,7 +22,7 @@
           }
  
 +          */
-+         final var console = new sh.miles.voidcr.adjust.rewrite.SmartConsole();
++         final var console = new sh.miles.voidcr.adjust.rewrite.ConsoleRewrite();
 +         console.spin();
 +         while(ServerSingletons.running.get());
 +         console.halt();

@@ -33,8 +33,8 @@
              BlockEventTrigger[] triggers = this.blockState != null ? this.blockState.getTrigger("onInteract") : null;
              if (triggers != null) {
                 BlockEventArgs args = new BlockEventArgs();
-@@ -102,6 +_,7 @@
-                }
+@@ -99,6 +_,7 @@
+                args.run(triggers);
              }
           }
 +         if (blockPos != null) sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerBreakBlock(identity, this.blockPos, this.blockState); // VoidCR - PostPlayerInteractBlockEvent

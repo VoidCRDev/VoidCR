@@ -1,14 +1,14 @@
 --- a/finalforeach/cosmicreach/networking/server/ServerSingletons.java
 +++ b/finalforeach/cosmicreach/networking/server/ServerSingletons.java
-@@ -36,6 +_,7 @@
- import io.netty.util.AttributeKey;
+@@ -41,6 +_,7 @@
+ import java.util.function.Consumer;
  
  public class ServerSingletons {
 +   public static java.util.concurrent.atomic.AtomicBoolean running = new java.util.concurrent.atomic.AtomicBoolean(true); // VoidCR - allow control of server termination
     public static NettyServer SERVER;
     private static ObjectMap<NetworkIdentity, Account> netIdsToAccounts = new ObjectMap();
     private static ObjectMap<Account, NetworkIdentity> accountsToNetIds = new ObjectMap();
-@@ -99,6 +_,7 @@
+@@ -104,6 +_,7 @@
        Zone zone = player.getZone();
        zone.addPlayer(player);
        world.players.add(player);
@@ -16,7 +16,7 @@
        ArrayIterator var5 = world.players.iterator();
  
        while (var5.hasNext()) {
-@@ -148,30 +_,38 @@
+@@ -159,10 +_,12 @@
           world.currentWorldTick++;
           if (SERVER != null) {
              SERVER.broadcastToAll(new EndTickPacket(world.currentWorldTick));
@@ -28,24 +28,27 @@
 +      sh.miles.voidcr.impl.server.VoidServer.SERVER.load(); // VoidCR - initialize server
     }
  
+    private static void registerBlockEntityScreenOpener(String blockEntityId, Consumer<BlockEntityScreenInfo> info) {
+@@ -171,22 +_,28 @@
+ 
     private static void registerBlockEntityOpeners() {
-       GameSingletons.registerBlockEntityScreenOpener("base:container", info -> {
+       registerBlockEntityScreenOpener("base:container", info -> {
 +         if(!sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerOpenBlockScreen(info)) return; // VoidCR call PrePlayerOpenBlockScreen
           ServerIdentity id = getConnection(info.player());
           BlockEntity blockEntity = info.blockEntity();
           id.send(new BlockEntityDataPacket(blockEntity));
-          id.send(new BlockEntityScreenPacket(blockEntity));
+          id.send(new BlockEntityScreenPacket((IBlockEntityWithContainer)blockEntity));
 +         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerOpenBlockScreen(info); // VoidCR call PostPlayerOpenBlockScreen
        });
-       GameSingletons.registerBlockEntityScreenOpener("base:furnace", info -> {
+       registerBlockEntityScreenOpener("base:furnace", info -> {
 +         if(!sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerOpenBlockScreen(info)) return; // VoidCR call PrePlayerOpenBlockScreen
           ServerIdentity id = getConnection(info.player());
           BlockEntity blockEntity = info.blockEntity();
           id.send(new BlockEntityDataPacket(blockEntity));
-          id.send(new BlockEntityScreenPacket(blockEntity));
+          id.send(new BlockEntityScreenPacket((IBlockEntityWithContainer)blockEntity));
 +         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerOpenBlockScreen(info); // VoidCR call PostPlayerOpenBlockScreen
        });
-       GameSingletons.registerBlockEntityScreenOpener(BlockEntitySign.BLOCK_ENTITY_ID.toString(), info -> {
+       registerBlockEntityScreenOpener("base:sign_entity", info -> {
 +         if(!sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerOpenBlockScreen(info)) return; // VoidCR call PrePlayerOpenBlockScreen
           ServerIdentity id = getConnection(info.player());
           BlockEntity blockEntity = info.blockEntity();

@@ -1,27 +1,32 @@
 --- a/finalforeach/cosmicreach/entities/player/Player.java
 +++ b/finalforeach/cosmicreach/entities/player/Player.java
-@@ -24,7 +_,7 @@
+@@ -24,9 +_,9 @@
     public Gamemode gamemode = Gamemode.SURVIVAL;
     public String zoneId;
     private Entity entity;
 -   public SlotContainer inventory = new SlotContainer(40);
 +   public SlotContainer inventory; // VoidCR - modification of slots
     public CraftingSlotContainer craftingContainer = new CraftingSlotContainer();
+-   public SlotContainer cursor = new SlotContainer(1);
++   public SlotContainer cursor; // VoidCR - modification of slots
     public boolean isSprinting;
     public boolean isProne;
-@@ -57,6 +_,7 @@
+    public boolean isProneIntended;
+@@ -58,6 +_,8 @@
     public void setEntity(Entity entity) {
        this.entity = entity;
        if (entity != null) {
 +         inventory = new SlotContainer(40, this.entity, 0); // VoidCR allow for easier modification of slots
++         cursor = new SlotContainer(1, this.entity, -1); // VoidCR allow for easier modification of slots
           this.entity.localBoundingBox.set(this.standingBoundingBox);
           this.entity.viewPositionOffset.set(this.standingViewPositionOffset);
        }
-@@ -250,6 +_,10 @@
+@@ -251,6 +_,11 @@
        if (jsonData.has("inventory")) {
           try {
              this.inventory = (SlotContainer)json.readValue("inventory", SlotContainer.class, jsonData);
-+            // VoidCR start - set back properties on loaded inventory
++            // VoidCR start - set back properties on loaded inventory and load cursor inventory
++            this.cursor = new SlotContainer(1, this.entity, -1);
 +            this.inventory.owner = this.entity;
 +            this.inventory.windowId = 0;
 +            // VoidCR end - set back properties on loaded inventory

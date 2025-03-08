@@ -2,7 +2,7 @@ package sh.miles.voidcr.impl.world.block.entity;
 
 import com.badlogic.gdx.graphics.Color;
 import com.google.common.base.Preconditions;
-import finalforeach.cosmicreach.networking.packets.blocks.SignsEntityPacket;
+import finalforeach.cosmicreach.networking.packets.blockentities.SignsEntityPacket;
 import finalforeach.cosmicreach.networking.server.ServerSingletons;
 import sh.miles.voidcr.world.block.entity.BlockEntitySign;
 

@@ -10,7 +10,7 @@
     public boolean shouldSaveInChunks = true;
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
-@@ -281,19 +_,30 @@
+@@ -282,19 +_,30 @@
     public boolean hasTag(GameTag tag) {
        return this.tags == null ? false : this.tags.contains(tag);
     }
@@ -44,12 +44,12 @@
        }
     }
  
-@@ -320,7 +_,7 @@
+@@ -321,7 +_,7 @@
     }
  
     public void onAttackInteraction(Entity sourceEntity) {
--      this.hit(100.0F);
-+      this.hit(100.0F, sourceEntity); // VoidCR provide sourceEntity
+-      this.hit(1.0F);
++      this.hit(1.0F, sourceEntity); // VoidCR provide sourceEntity
     }
  
     public void onCollideWithBlock(Axis axis, BlockState block, int bx, int by, int bz) {

@@ -63,7 +63,7 @@ public class VoidPrePlayerChatEvent extends VoidPlayerChatEvent implements PrePl
     public Array<ServerIdentity> getCosmicReachRecipients() {
         final Array<ServerIdentity> collector = new Array<>(this.recipients.size());
         for (final PlayerEntity recipient : this.recipients) {
-            collector.add(ServerSingletons.getConnection(((VoidPlayerEntity) recipient).getMirror().player));
+            collector.add(ServerSingletons.getConnection(((VoidPlayerEntity) recipient).getMirror().getPlayer()));
         }
 
         return collector;

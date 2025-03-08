@@ -1,5 +1,5 @@
---- a/finalforeach/cosmicreach/networking/packets/blocks/SignsEntityPacket.java
-+++ b/finalforeach/cosmicreach/networking/packets/blocks/SignsEntityPacket.java
+--- a/finalforeach/cosmicreach/networking/packets/blockentities/SignsEntityPacket.java
++++ b/finalforeach/cosmicreach/networking/packets/blockentities/SignsEntityPacket.java
 @@ -55,9 +_,20 @@
           Zone zone = identity.getZone();
           if (zone.getBlockEntity(this.x, this.y, this.z) instanceof BlockEntitySign sign

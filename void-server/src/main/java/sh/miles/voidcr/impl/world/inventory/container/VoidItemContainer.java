@@ -67,14 +67,14 @@ public class VoidItemContainer implements ItemContainer, Mirrored<SlotContainer>
     public void updateRemote() {
         final var owner = this.mirror.owner;
         if (owner instanceof PlayerEntity player && mirror.windowId != -1) {
-            this.mirror.syncDirtySlots(this.mirror.windowId, ServerSingletons.getConnection(player.player));
+            this.mirror.syncDirtySlots(this.mirror.windowId, ServerSingletons.getConnection(player.getPlayer()));
         }
     }
 
     public void syncSlot(ItemSlot slot) {
         final var owner = this.mirror.owner;
         if (owner instanceof PlayerEntity player && mirror.windowId != -1) {
-            ServerSingletons.getConnection(player.player).send(new SlotSyncPacket(mirror.windowId, new SingleDynamicArray<>(slot)));
+            ServerSingletons.getConnection(player.getPlayer()).send(new SlotSyncPacket(mirror.windowId, new SingleDynamicArray<>(slot)));
         }
     }
 }

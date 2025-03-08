@@ -78,7 +78,7 @@ public final class VoidPlayerEntity extends VoidEntity implements PlayerEntity {
     }
 
     private Player player() {
-        return getMirror().player;
+        return getMirror().getPlayer();
     }
 
     @Override

@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/GameSingletons.java
 +++ b/finalforeach/cosmicreach/GameSingletons.java
-@@ -244,7 +_,7 @@
+@@ -249,7 +_,7 @@
           World world = GameSingletons.world;
           if (world != null) {
              world.players.clear();

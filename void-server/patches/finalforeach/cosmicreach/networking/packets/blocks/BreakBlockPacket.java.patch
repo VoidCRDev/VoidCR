@@ -25,8 +25,8 @@
              if (this.brokenBlockState.hardness > 0.0F) {
              }
  
-@@ -66,6 +_,7 @@
-                }
+@@ -63,6 +_,7 @@
+                args.run(triggers);
              }
           }
 +         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerBreakBlock(identity, this.blockPos, this.brokenBlockState); // VoidCR call PostPlayerBlockBreakEvent
