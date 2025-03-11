@@ -115,11 +115,7 @@ public final class VoidLifecycleManager<C> implements LifecycleManager<C> {
         Preconditions.checkArgument(preferred != null, "The provided preferred owner must not be null");
 
         final var container = (CommandArgumentResolverContainer<C, R>) this.arguments.get(type);
-        if (container == null) {
-            return null;
-        }
-
-        var result = container.query(preferred, backup);
+        var result = container != null ? container.query(preferred, backup) : null;
         if (result == null) {
             return (CommandArgumentResolver<R>) builtInArguments.get(type);
         } else {
