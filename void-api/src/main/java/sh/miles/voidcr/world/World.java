@@ -4,6 +4,7 @@ import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.Entity;
 import sh.miles.voidcr.entity.EntityIdentifier;
 import sh.miles.voidcr.util.NamedKey;
+import sh.miles.voidcr.world.block.BlockState;
 import sh.miles.voidcr.world.position.BlockPos;
 import sh.miles.voidcr.world.position.Position;
 
@@ -23,6 +24,25 @@ public interface World {
      * @since 0.3.14
      */
     Position getWorldSpawn();
+
+    /**
+     * Sets the block state at the provided position
+     *
+     * @param pos   the position to set the state at
+     * @param state the block state to set
+     * @since 0.4.1
+     */
+    void setBlockState(BlockPos pos, BlockState state);
+
+    /**
+     * Gets the block state at the given position
+     *
+     * @param pos the position to get the block state at
+     * @return the state, or null if no state
+     * @since 0.4.1
+     */
+    @Nullable
+    BlockState getBlockState(BlockPos pos);
 
     /**
      * Attempts to get the chunk at the given chunk position

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import finalforeach.cosmicreach.blockentities.BlockEntity;
 import finalforeach.cosmicreach.blocks.BlockPosition;
 import finalforeach.cosmicreach.savelib.crbin.ICRBinSerializable;
+import finalforeach.cosmicreach.world.Zone;
 import sh.miles.voidcr.impl.util.VoidMagicMethods;
 import sh.miles.voidcr.util.CRSerializerHelper;
 import sh.miles.voidcr.util.CRSerializerHelper.CRBinSerializerWrapper;
@@ -20,6 +21,10 @@ public class VoidBlockPos extends VoidIntPosition<BlockPos> implements BlockPos 
 
     public static VoidBlockPos fromCRPos(BlockPosition position) {
         return new VoidBlockPos(position.getGlobalX(), position.getGlobalY(), position.getGlobalZ());
+    }
+
+    public static BlockPosition toGlobalCRPos(Zone zone, BlockPos pos) {
+        return BlockPosition.ofGlobal(zone, pos.x(), pos.y(), pos.z());
     }
 
     public VoidBlockPos(final int x, final int y, final int z) {

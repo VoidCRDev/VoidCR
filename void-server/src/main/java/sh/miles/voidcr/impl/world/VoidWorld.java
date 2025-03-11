@@ -2,11 +2,14 @@ package sh.miles.voidcr.impl.world;
 
 import com.badlogic.gdx.utils.Array;
 import com.google.common.base.Preconditions;
+import finalforeach.cosmicreach.world.BlockSetter;
 import finalforeach.cosmicreach.world.Zone;
+import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.Entity;
 import sh.miles.voidcr.entity.EntityIdentifier;
 import sh.miles.voidcr.impl.entity.VoidEntity;
 import sh.miles.voidcr.impl.entity.VoidEntityIdentifier;
+import sh.miles.voidcr.impl.world.block.VoidBlockState;
 import sh.miles.voidcr.impl.world.position.VoidBlockPos;
 import sh.miles.voidcr.impl.world.position.VoidPosition;
 import sh.miles.voidcr.util.Mirrored;
@@ -14,6 +17,7 @@ import sh.miles.voidcr.util.NamedKey;
 import sh.miles.voidcr.world.Chunk;
 import sh.miles.voidcr.world.Universe;
 import sh.miles.voidcr.world.World;
+import sh.miles.voidcr.world.block.BlockState;
 import sh.miles.voidcr.world.position.BlockPos;
 import sh.miles.voidcr.world.position.Position;
 
@@ -39,6 +43,19 @@ public final class VoidWorld implements World, Mirrored<Zone> {
     @Override
     public Position getWorldSpawn() {
         return VoidPosition.fromVector3(mirror.spawnPoint);
+    }
+
+    @Override
+    public void setBlockState(final BlockPos pos, final BlockState state) {
+        final var crstate = ((VoidBlockState) state).getMirror();
+        mirror.setBlockState(crstate, pos.x(), pos.y(), pos.z());
+        BlockSetter.get().replaceBlock(this.mirror, crstate, VoidBlockPos.toGlobalCRPos(this.mirror, pos));
+    }
+
+    @Override
+    public @Nullable BlockState getBlockState(final BlockPos pos) {
+        final var state = mirror.getBlockState(pos.x(), pos.y(), pos.z());
+        return state != null ? state.getVoidMirror() : null;
     }
 
     @Override

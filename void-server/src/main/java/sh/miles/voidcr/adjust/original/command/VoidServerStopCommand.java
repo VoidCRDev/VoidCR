@@ -1,4 +1,4 @@
-package sh.miles.voidcr.adjust.rewrite.command;
+package sh.miles.voidcr.adjust.original.command;
 
 import finalforeach.cosmicreach.GameSingletons;
 import finalforeach.cosmicreach.Threads;

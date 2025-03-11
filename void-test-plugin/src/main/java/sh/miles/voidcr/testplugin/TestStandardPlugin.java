@@ -4,6 +4,7 @@ import org.jspecify.annotations.NullMarked;
 import sh.miles.voidcr.entity.PlayerEntity;
 import sh.miles.voidcr.plugin.type.StandardPlugin;
 import sh.miles.voidcr.server.Server;
+import sh.miles.voidcr.world.block.BlockType;
 import sh.miles.voidcr.world.position.Position;
 
 @NullMarked
@@ -13,9 +14,8 @@ public class TestStandardPlugin implements StandardPlugin {
     public void initialize(final Server server) {
         server.getLifecycle().registerCommand(this, (builder) -> {
             builder.name("cmd").executor((executor, context) -> {
-                executor.sendMessage("Teleporting...");
                 if (executor instanceof PlayerEntity player) {
-                    player.teleport(Position.create(100, 100, 100));
+                    player.getWorld().setBlockState(player.getPosition().coerce(), BlockType.BRICKS.getDefaultBlockState());
                 }
             });
         });
