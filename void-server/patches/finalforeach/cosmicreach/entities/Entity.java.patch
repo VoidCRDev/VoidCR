@@ -10,7 +10,7 @@
     public boolean shouldSaveInChunks = true;
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
-@@ -282,19 +_,30 @@
+@@ -282,19 +_,31 @@
     public boolean hasTag(GameTag tag) {
        return this.tags == null ? false : this.tags.contains(tag);
     }
@@ -22,6 +22,7 @@
 +   public void hit(float amount, Entity sourceEntity) {
        if (amount != 0.0F) {
 +         if (sourceEntity != null && sourceEntity.isDead()) return; // fix event trigger while dead
++         if (sourceEntity instanceof finalforeach.cosmicreach.entities.player.PlayerEntity pentity && pentity.getPlayer().gamemode.canInstantBreak() && sh.miles.voidcr.impl.server.VoidServer.SERVER.getConfiguration().behaviorChanges().creativeInstantKill()) amount = Integer.MAX_VALUE;
 +         final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityDamage(amount, maxInvulnerabilityFrames, sourceEntity, this);
 +         if (event != null && event.isCanceled()) return;
 +         amount = event == null ? amount : event.getDamage();

@@ -8,7 +8,8 @@ import finalforeach.cosmicreach.items.ItemStack;
 import java.util.function.Predicate;
 
 public record VoidBehaviorChangeConfiguration(
-        boolean activeDroneTrapsInCreativeWithInteraction
+        boolean activeDroneTrapsInCreativeWithInteraction,
+        boolean creativeInstantKill
 ) {
 
     public boolean activateDroneTrapOnRightClick(Player player, ItemStack heldItemStack) {
@@ -17,7 +18,8 @@ public record VoidBehaviorChangeConfiguration(
 
     public static VoidBehaviorChangeConfiguration parse(JsonObject object) {
         return new VoidBehaviorChangeConfiguration(
-                object.get("activate_done_traps_in_creative_with_interact").getAsBoolean()
+                object.get("activate_done_traps_in_creative_with_interact").getAsBoolean(),
+                object.get("creative_instant_kill").getAsBoolean()
         );
     }
 }

@@ -1,6 +1,7 @@
 {
   "plugins_directory": "plugins",
   "game_behavior_changes": {
-    "activate_done_traps_in_creative_with_interact": true
+    "activate_done_traps_in_creative_with_interact": true,
+    "creative_instant_kill": true
   }
 }
