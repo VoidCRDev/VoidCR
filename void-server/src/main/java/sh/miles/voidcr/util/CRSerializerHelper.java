@@ -4,9 +4,11 @@ import com.google.common.base.Preconditions;
 import finalforeach.cosmicreach.savelib.crbin.CRBinDeserializer;
 import finalforeach.cosmicreach.savelib.crbin.CRBinSerializer;
 import finalforeach.cosmicreach.savelib.crbin.ICRBinSerializable;
+import sh.miles.voidcr.impl.server.network.VoidAccount;
 import sh.miles.voidcr.impl.world.position.VoidBlockPos;
 import sh.miles.voidcr.impl.world.position.VoidPosition;
 import sh.miles.voidcr.impl.world.position.VoidVector;
+import sh.miles.voidcr.server.network.AccountIdentifier;
 import sh.miles.voidcr.world.position.BlockPos;
 import sh.miles.voidcr.world.position.Position;
 import sh.miles.voidcr.world.position.Vector;
@@ -87,6 +89,24 @@ public class CRSerializerHelper {
 
             @Override
             public Vector getResult() throws IllegalStateException {
+                Preconditions.checkState(super.result != null, "Can not retrieve result from CRBinSerializerWrapper because it has not been read yet");
+                return super.result;
+            }
+        });
+        serializer.put(AccountIdentifier.class, () -> new CRBinSerializerWrapper<AccountIdentifier>() {
+            @Override
+            public void read(final CRBinDeserializer deserializer) {
+                final String uuid = deserializer.readString("account_uuid");
+                super.result = new VoidAccount.VoidAccountIdentifier(uuid);
+            }
+
+            @Override
+            public void write(final CRBinSerializer serializer) {
+                serializer.writeString("account_uuid", ((VoidAccount.VoidAccountIdentifier) super.result).getRaw());
+            }
+
+            @Override
+            public AccountIdentifier getResult() throws IllegalStateException {
                 Preconditions.checkState(super.result != null, "Can not retrieve result from CRBinSerializerWrapper because it has not been read yet");
                 return super.result;
             }

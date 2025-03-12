@@ -20,6 +20,8 @@ public finalforeach/cosmicreach/items/ItemStack durability
 
 public finalforeach/cosmicreach/networking/netty/NettyServer authenticatedConnections
 
+public finalforeach/cosmicreach/networking/server/ServerSingletons uniqueIdsToAccounts
+
 public finalforeach/cosmicreach/world/Chunk blockEntities
 ~AT
 
@@ -29,6 +31,8 @@ sh/miles/voidcr/impl/entity/VoidDroneTrapEntity finalforeach/cosmicreach/entitie
 sh/miles/voidcr/impl/entity/VoidEntity finalforeach/cosmicreach/entities/Entity
 sh/miles/voidcr/impl/entity/VoidProjectileEntity finalforeach/cosmicreach/entities/EntityLaserProjectile
 sh/miles/voidcr/impl/entity/VoidPlayerEntity finalforeach/cosmicreach/entities/player/PlayerEntity
+
+sh/miles/voidcr/impl/server/network/VoidAccount finalforeach/cosmicreach/accounts/Account
 
 sh/miles/voidcr/impl/world/VoidChunk finalforeach/cosmicreach/world/Chunk
 sh/miles/voidcr/impl/world/VoidUniverse finalforeach/cosmicreach/world/World
@@ -42,5 +46,6 @@ sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityLaserEmitter finalforeach
 sh/miles/voidcr/impl/world/block/entity/VoidBlockEntitySign finalforeach/cosmicreach/blockentities/BlockEntitySign
 
 sh/miles/voidcr/impl/world/inventory/container/VoidItemContainer finalforeach/cosmicreach/items/containers/SlotContainer
+
 sh/miles/voidcr/impl/world/inventory/item/VoidItemStack finalforeach/cosmicreach/items/ItemStack
 ~APIGEN

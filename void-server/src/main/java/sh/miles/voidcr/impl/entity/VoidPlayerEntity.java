@@ -8,6 +8,7 @@ import finalforeach.cosmicreach.networking.packets.MessagePacket;
 import finalforeach.cosmicreach.networking.packets.entities.PlayerPositionPacket;
 import finalforeach.cosmicreach.networking.server.ServerSingletons;
 import sh.miles.voidcr.entity.PlayerEntity;
+import sh.miles.voidcr.server.network.Account;
 import sh.miles.voidcr.world.World;
 import sh.miles.voidcr.world.inventory.container.ItemContainer;
 import sh.miles.voidcr.world.position.Position;
@@ -17,6 +18,11 @@ public final class VoidPlayerEntity extends VoidEntity implements PlayerEntity {
     public VoidPlayerEntity(finalforeach.cosmicreach.entities.player.PlayerEntity mirror) {
         super(mirror);
         Preconditions.checkState(player() != null, "Every VoidPlayerEntity must have a player associated with it");
+    }
+
+    @Override
+    public Account getAccount() {
+        return player().getAccount().getVoidMirror();
     }
 
     @Override

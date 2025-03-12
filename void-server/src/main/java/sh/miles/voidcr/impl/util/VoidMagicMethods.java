@@ -8,17 +8,16 @@ import finalforeach.cosmicreach.savelib.crbin.CRBinSerializer;
 import finalforeach.cosmicreach.savelib.crbin.ICRBinSerializable;
 import sh.miles.voidcr.entity.EntityIdentifier;
 import sh.miles.voidcr.impl.entity.VoidEntityIdentifier;
+import sh.miles.voidcr.impl.server.network.VoidAccount;
 import sh.miles.voidcr.impl.server.registry.VoidRegistries;
-import sh.miles.voidcr.impl.util.collection.VoidRegistry;
 import sh.miles.voidcr.impl.world.inventory.item.VoidItemKey;
 import sh.miles.voidcr.impl.world.inventory.item.VoidItemStack;
 import sh.miles.voidcr.impl.world.inventory.item.VoidItemType;
 import sh.miles.voidcr.impl.world.position.VoidBlockPos;
 import sh.miles.voidcr.impl.world.position.VoidPosition;
 import sh.miles.voidcr.impl.world.position.VoidVector;
-import sh.miles.voidcr.server.registry.NamedRegistry;
+import sh.miles.voidcr.server.network.AccountIdentifier;
 import sh.miles.voidcr.util.CRSerializerHelper;
-import sh.miles.voidcr.util.Keyed;
 import sh.miles.voidcr.util.MagicMethods;
 import sh.miles.voidcr.util.NamedKey;
 import sh.miles.voidcr.util.collection.KeyHolder;
@@ -44,6 +43,7 @@ public final class VoidMagicMethods implements MagicMethods {
             .put(BlockPos.class, new Pair<>(() -> CRSerializerHelper.create(BlockPos.class), VoidBlockPos::deserialize))
             .put(Position.class, new Pair<>(() -> CRSerializerHelper.create(Position.class), VoidPosition::deserialize))
             .put(Vector.class, new Pair<>(() -> CRSerializerHelper.create(Vector.class), VoidVector::deserialize))
+            .put(AccountIdentifier.class, new Pair<>(() -> CRSerializerHelper.create(AccountIdentifier.class), VoidAccount.VoidAccountIdentifier::deserialize))
             .build();
 
     @Override

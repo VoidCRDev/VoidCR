@@ -1,9 +1,13 @@
 package sh.miles.voidcr.server;
 
 import org.apache.logging.log4j.Logger;
+import org.jspecify.annotations.Nullable;
+import sh.miles.voidcr.entity.PlayerEntity;
 import sh.miles.voidcr.plugin.lifecycle.LifecycleManager;
 import sh.miles.voidcr.plugin.type.StandardPlugin;
 import sh.miles.voidcr.server.configuration.ServerConfiguration;
+import sh.miles.voidcr.server.network.Account;
+import sh.miles.voidcr.server.network.AccountIdentifier;
 import sh.miles.voidcr.util.MagicMethods;
 
 import java.nio.file.Path;
@@ -14,6 +18,25 @@ import java.nio.file.Path;
  * @since 0.3.14
  */
 public interface Server {
+
+    /**
+     * Attempts to find an online player with the given identifier
+     *
+     * @param identifier the identifier
+     * @return the player, or null if no online player has that identifier
+     * @since 0.4.1
+     */
+    PlayerEntity getPlayer(AccountIdentifier identifier);
+
+    /**
+     * Attempts to find an online account with the given identifier
+     *
+     * @param identifier the identifier
+     * @return the account, or null if no online account has that identifier
+     * @since 0.4.1
+     */
+    @Nullable
+    Account getAccount(AccountIdentifier identifier);
 
     /**
      * Gets the server's main configuration file

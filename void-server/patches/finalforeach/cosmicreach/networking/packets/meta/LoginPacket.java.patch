@@ -1,0 +1,35 @@
+--- a/finalforeach/cosmicreach/networking/packets/meta/LoginPacket.java
++++ b/finalforeach/cosmicreach/networking/packets/meta/LoginPacket.java
+@@ -52,6 +_,15 @@
+    @Override
+    public void handle(NetworkIdentity identity, ChannelHandlerContext ctx) {
+       if (!identity.isClient()) {
++         // VoidCR start - PreAccountJoinEvent for offline mode
++         if (ServerSettings.OFFLINE_MODE.isTrue()) {
++            final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preAccountJoin(account);
++            if (event != null && event.isKicked()) {
++               ServerSingletons.SERVER.kick(event.getKickMessage(), identity);
++               return;
++            }
++         }
++         // VoidCR end - PreAccountJoinEvent for offline mode
+          if (ctx.channel().hasAttr(LOGIN_SET_ATTRIB)) {
+             ServerSingletons.SERVER.kick("Already recieved a login packet!", identity);
+          }
+@@ -70,7 +_,7 @@
+                Logger.info("IP is in the banlist: " + address);
+                ServerSingletons.SERVER.kick("You are banned on this server.", identity);
+             } else {
+-               if (this.account instanceof IAuthenticatedAccount authAccount) {
++               if (this.account instanceof IAuthenticatedAccount authAccount && ServerSettings.OFFLINE_MODE.isFalse()) { // VoidCR don't authenticate in offline mode
+                   authAccount.challengeClientFromServer(identity, ctx);
+                } else if (this.account.isAllowed() && ServerSettings.OFFLINE_MODE.isTrue()) {
+                   ServerSingletons.addAccount(identity, this.account);
+@@ -78,6 +_,7 @@
+                   Logger.info(
+                      "Is it really " + this.account.getUsername() + "? I have no choice to believe so (Offline mode)!"
+                   );
++                  sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postAccountJoin(account); // VoidCR - PostAccountJoinEvent for offline mode
+                } else {
+                   Logger.info("Unable to authenticate " + this.account.getUsername());
+                   ServerSingletons.SERVER.kick("Unable to authenticate your account.", identity);

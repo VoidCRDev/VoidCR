@@ -1,18 +1,24 @@
 package sh.miles.voidcr.impl.server;
 
+import com.google.common.base.Preconditions;
 import com.google.common.base.Suppliers;
 import finalforeach.cosmicreach.chat.commands.Command;
 import finalforeach.cosmicreach.networking.server.ServerSingletons;
 import org.apache.logging.log4j.Logger;
+import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.Main;
 import sh.miles.voidcr.adjust.original.command.VoidServerStopCommand;
+import sh.miles.voidcr.entity.PlayerEntity;
 import sh.miles.voidcr.impl.plugin.VoidPluginLoader;
 import sh.miles.voidcr.impl.plugin.lifecycle.VoidLifecycleManager;
 import sh.miles.voidcr.impl.server.configuration.VoidServerConfiguration;
+import sh.miles.voidcr.impl.server.network.VoidAccount;
 import sh.miles.voidcr.impl.util.VoidMagicMethods;
 import sh.miles.voidcr.server.Console;
 import sh.miles.voidcr.server.Server;
 import sh.miles.voidcr.server.VoidCR;
+import sh.miles.voidcr.server.network.Account;
+import sh.miles.voidcr.server.network.AccountIdentifier;
 import sh.miles.voidcr.util.MagicMethods;
 import sh.miles.voidcr.util.VoidConstants;
 
@@ -38,6 +44,22 @@ public final class VoidServer implements Server {
         this.lifecycle = new VoidLifecycleManager<>(this);
         this.configuration = VoidServerConfiguration.read(this);
         this.console = new VoidConsole(Suppliers.memoize(() -> ServerSingletons.SERVER.systemChat));
+    }
+
+    @Override
+    public PlayerEntity getPlayer(final AccountIdentifier identifier) {
+        Preconditions.checkArgument(identifier != null, "The provided identifier must not be null");
+        final var vcr = (VoidAccount.VoidAccountIdentifier) identifier;
+        final var account = ServerSingletons.uniqueIdsToAccounts.get(vcr.getRaw());
+        return account == null ? null : (PlayerEntity) account.getPlayer().getEntity().getVoidMirror();
+    }
+
+    @Override
+    public @Nullable Account getAccount(final AccountIdentifier identifier) {
+        Preconditions.checkArgument(identifier != null, "The provided identifier must not be null");
+        final var vcr = (VoidAccount.VoidAccountIdentifier) identifier;
+        final var account = ServerSingletons.uniqueIdsToAccounts.get(vcr.getRaw());
+        return account == null ? null : account.getVoidMirror();
     }
 
     @Override

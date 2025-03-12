@@ -1,6 +1,7 @@
 package sh.miles.voidcr.entity;
 
 import sh.miles.voidcr.chat.Messageable;
+import sh.miles.voidcr.server.network.Account;
 import sh.miles.voidcr.world.World;
 import sh.miles.voidcr.world.inventory.container.ItemContainer;
 import sh.miles.voidcr.world.inventory.container.ItemContainerOwner;
@@ -11,6 +12,14 @@ import sh.miles.voidcr.world.inventory.container.ItemContainerOwner;
  * @since 0.3.22
  */
 public interface PlayerEntity extends Entity, Messageable, ItemContainerOwner {
+
+    /**
+     * Gets the account of this player
+     *
+     * @return the player's account
+     * @since 0.4.1
+     */
+    Account getAccount();
 
     /**
      * Gets the player's inventory

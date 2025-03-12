@@ -2,6 +2,7 @@ package sh.miles.voidcr.impl.plugin.lifecycle.event;
 
 import com.badlogic.gdx.graphics.Color;
 import finalforeach.cosmicreach.BlockEntityScreenInfo;
+import finalforeach.cosmicreach.accounts.Account;
 import finalforeach.cosmicreach.blockentities.BlockEntitySign;
 import finalforeach.cosmicreach.blocks.BlockPosition;
 import finalforeach.cosmicreach.blocks.BlockState;
@@ -12,6 +13,8 @@ import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.post.VoidPostPlayerChatE
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.pre.VoidPrePlayerChatEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityDamageEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityDamageEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.post.VoidPostAccountJoinEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.pre.VoidPreAccountJoinEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.post.VoidPostPlayerOpenBlockScreenEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.post.VoidPostPlayerSignUpdateEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.pre.VoidPrePlayerOpenBlockScreenEvent;
@@ -97,5 +100,13 @@ public final class VoidEventFactory {
 
     public static void postPlayerChat(String message, Player sender) {
         dispatchEvent(ctx -> new VoidPostPlayerChatEvent(ctx, message, sender));
+    }
+
+    public static VoidPreAccountJoinEvent preAccountJoin(Account account) {
+        return dispatchEvent(ctx -> new VoidPreAccountJoinEvent(ctx, account));
+    }
+
+    public static void postAccountJoin(Account account) {
+        dispatchEvent(ctx -> new VoidPostAccountJoinEvent(ctx, account));
     }
 }
