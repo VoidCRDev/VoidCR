@@ -1,14 +1,5 @@
 --- a/finalforeach/cosmicreach/networking/packets/meta/ItchSessionTokenPacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/meta/ItchSessionTokenPacket.java
-@@ -12,6 +_,8 @@
- import finalforeach.cosmicreach.util.logging.Logger;
- import io.netty.buffer.ByteBuf;
- import io.netty.channel.ChannelHandlerContext;
-+import sh.miles.voidcr.server.Server;
-+
- import java.io.OutputStream;
- import java.net.HttpURLConnection;
- import java.net.MalformedURLException;
 @@ -77,9 +_,16 @@
  
     @Override
