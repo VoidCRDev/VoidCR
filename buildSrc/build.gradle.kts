@@ -12,7 +12,7 @@ dependencies {
     implementation(libs.vineflower)
     implementation(libs.diffpath)
     implementation(libs.asm)
-    implementation("sh.miles.artisan:artisan-extensions:1.0.0-SNAPSHOT") {
+    implementation(libs.artistan) {
         isChanging = true
     }
 }

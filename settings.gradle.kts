@@ -7,4 +7,5 @@ gradle.rootProject {
 
 include("void-server")
 include("void-api")
+include("void-apigen")
 include("void-test-plugin")

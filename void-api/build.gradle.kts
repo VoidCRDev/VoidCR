@@ -1,5 +1,6 @@
 plugins {
     `java-library`
+    idea
 }
 
 group = rootProject.group
@@ -7,6 +8,20 @@ version = rootProject.name
 
 repositories {
     mavenCentral()
+}
+
+idea {
+    module {
+        generatedSourceDirs.add(file("src/generated/java"))
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir("src/generated/java")
+        }
+    }
 }
 
 dependencies {

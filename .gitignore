@@ -1,3 +1,4 @@
+/assets/
 /build/
 .gradle
 .idea/
@@ -16,14 +17,9 @@ gradle-app.setting
 
 
 buildSrc/build/
-
 void-server/build/
-
-void-server/decompile/
-
 void-server/src/cosmic-reach/
-
 VoidCR.iml
-
 void-api/build/
+void-apigen/build/
 void-test-plugin/build/

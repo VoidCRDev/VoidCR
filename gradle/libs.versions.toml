@@ -10,13 +10,19 @@ tuningfork-version = "4.3.0"
 netty-version = "4.1.24.Final"
 lz4-version = "1.8.0"
 # end Cosmic Reach
+crdatalib-version = "1.0.0-SNAPSHOT"
+artisan-version = "1.1.0-SNAPSHOT"
+javapoet-version = "0.6.0"
 gson-version = "2.11.0"
 guava-version = "33.4.0-jre"
 log4j-version = "2.24.3"
 jspecify-version = "1.0.0"
+shadow-version = "9.0.0-beta10"
 
 [libraries]
 # buildSrc
+crdatalib = { module = "sh.miles.crdatalib:crdatalib", version.ref = "crdatalib-version" }
+artistan = { module = "sh.miles.artisan:artisan-extensions", version.ref = "artisan-version" }
 vineflower = { module = "org.vineflower:vineflower", version.ref = "vineflower-version" }
 diffpath = { module = "io.codechicken:DiffPatch", version.ref = "diffpatch-version" }
 asm = { module = "org.ow2.asm:asm", version.ref = "asm-version" }
@@ -28,6 +34,7 @@ tuningfork = { module = "com.github.Hangman:TuningFork", version.ref = "tuningfo
 netty-all = { module = "io.netty:netty-all", version.ref = "netty-version" }
 lz4 = { module = "org.lz4:lz4-java", version.ref = "lz4-version" }
 # End Cosmic Reach
+javapoet = { module = "com.palantir.javapoet:javapoet", version.ref = "javapoet-version" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson-version" }
 guava = { module = "com.google.guava:guava", version.ref = "guava-version" }
 log4j-bom = { module = "org.apache.logging.log4j:log4j-bom", version.ref = "log4j-version" }
@@ -36,3 +43,4 @@ log4j-core = { module = "org.apache.logging.log4j:log4j-core" }
 jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify-version" }
 
 [plugins]
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow-version" }

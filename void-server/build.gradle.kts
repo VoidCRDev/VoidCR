@@ -7,10 +7,10 @@ import sh.miles.voidcr.task.SetupSourcesTask
 
 plugins {
     java
-    id("com.gradleup.shadow") version "9.0.0-beta4"
+    alias(libs.plugins.shadow)
 }
 
-val crVersion = "0.4.1"
+val crVersion = properties["cr-version"] as String
 
 group = rootProject.group
 version = rootProject.name
@@ -67,6 +67,9 @@ tasks.build {
     dependsOn(tasks.shadowJar)
 }
 
+val assetsFolder = rootProject.file("assets")
+val buildDataFolder = rootProject.file("build-data")
+
 val filterJar by tasks.registering(FilterAndTransformZipTask::class) {
     group = "voidcr-setup"
     val exclusions = listOf(
@@ -76,9 +79,9 @@ val filterJar by tasks.registering(FilterAndTransformZipTask::class) {
         "net/jpountz/"
     )
 
-    this.inputJar = file("decompile/Cosmic-Reach-Server-$crVersion.jar")
-    this.outputJar = file("decompile/Cosmic-Reach-Server-$crVersion-filtered.jar")
-    this.atFile = file("data/voidcr.ajex")
+    this.inputJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion.jar")
+    this.outputJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-filtered.jar")
+    this.atFile = buildDataFolder.resolve("voidcr.ajex")
     this.filterFunction.set { entry ->
         for (exclusion in exclusions) {
             if (entry.startsWith(exclusion)) {
@@ -92,8 +95,8 @@ val filterJar by tasks.registering(FilterAndTransformZipTask::class) {
 
 val decompileJar by tasks.registering(DecompileTask::class) {
     group = "voidcr-setup"
-    this.decompileTarget = file("decompile/Cosmic-Reach-Server-$crVersion-filtered.jar")
-    this.decompilerOutput = file("decompile/Cosmic-Reach-Server-$crVersion-decompiled.jar")
+    this.decompileTarget = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-filtered.jar")
+    this.decompilerOutput = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-decompiled.jar")
     this.decompilerArguments = listOf(
         "-dcc=1",
         "-ega=1",
@@ -108,16 +111,16 @@ val decompileJar by tasks.registering(DecompileTask::class) {
 val setupSources by tasks.registering(SetupSourcesTask::class) {
     group = "voidcr-setup"
 
-    this.patchedJar = file("decompile/Cosmic-Reach-Server-$crVersion-patched.jar")
+    this.patchedJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-patched.jar")
     this.sourceDir = file("src/cosmic-reach/java")
 }
 
 val applyPatches by tasks.registering(ApplyPatchesTask::class) {
     group = "voidcr-patching"
     this.patchDir = file("patches")
-    this.inputFile = file("decompile/Cosmic-Reach-Server-$crVersion-decompiled.jar")
-    this.outputJar = file("decompile/Cosmic-Reach-Server-$crVersion-patched.jar")
-    this.failedPatchesJar = file("decompile/Cosmic-Reach-Server-$crVersion-failed-patched.jar")
+    this.inputFile = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-decompiled.jar")
+    this.outputJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-patched.jar")
+    this.failedPatchesJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-failed-patched.jar")
 
     dependsOn(decompileJar)
 }
@@ -125,9 +128,9 @@ val applyPatches by tasks.registering(ApplyPatchesTask::class) {
 val applyPatchesFuzzy by tasks.registering(ApplyPatchesFuzzyTask::class) {
     group = "voidcr-patching"
     this.patchDir = file("patches")
-    this.inputFile = file("decompile/Cosmic-Reach-Server-$crVersion-decompiled.jar")
-    this.outputJar = file("decompile/Cosmic-Reach-Server-$crVersion-patched.jar")
-    this.failedPatchesJar = file("decompile/Cosmic-Reach-Server-$crVersion-failed-patched.jar")
+    this.inputFile = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-decompiled.jar")
+    this.outputJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-patched.jar")
+    this.failedPatchesJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-failed-patched.jar")
 
     dependsOn(decompileJar)
 }
@@ -136,11 +139,11 @@ val buildPatches by tasks.registering(BuildPatchesTask::class) {
     group = "voidcr-patching"
     this.patchDir = file("patches")
     this.sourceDir = file("src/cosmic-reach/java")
-    this.decompiledJar = file("decompile/Cosmic-Reach-Server-$crVersion-decompiled.jar")
+    this.decompiledJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion-decompiled.jar")
 }
 
 val generateResources by tasks.registering(Copy::class) {
-    from(zipTree("decompile/Cosmic-Reach-Server-$crVersion.jar"))
+    from(zipTree(assetsFolder.resolve("Cosmic-Reach-Server-$crVersion.jar")))
     include("base/**", "build_assets/**", "icons/**", "post_build/**", "assets.txt")
     into(project.layout.buildDirectory.file("generated/cosmic-reach-assets"))
 }

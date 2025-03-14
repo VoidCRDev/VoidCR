@@ -52,11 +52,15 @@ abstract class FilterAndTransformZipTask : DefaultTask() {
                 if (!filterFunc(entry.name)) continue
                 val bytes = inputZip.getInputStream(entry).readAllBytes()
                 writer.putNextEntry(ZipEntry(entry.name))
-                writer.write(
-                    classEditor.clearClassProvider()
-                        .classBytes(bytes)
-                        .run()
-                )
+                if (entry.name.contains(".class")) {
+                    writer.write(
+                        classEditor.clearClassProvider()
+                            .classBytes(bytes)
+                            .run()
+                    )
+                } else {
+                    writer.write(bytes)
+                }
                 writer.closeEntry()
             }
         }

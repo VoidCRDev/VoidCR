@@ -18,25 +18,6 @@ import sh.miles.voidcr.world.block.BlockType;
  */
 public interface ItemType extends Keyed {
 
-    ItemType AXE_ALUMINIUM = item("axe_aluminium");
-    ItemType AXE_IRON = item("axe_iron");
-    ItemType AXE_STONE = item("axe_stone");
-    ItemType FLUID_VACUUM = item("fluid_vacuum");
-    ItemType INGOT_ALUMINIUM = item("ingot_aluminium");
-    ItemType INGOT_IRON = item("ingot_iron");
-    ItemType LASER_GUN = item("laser_gun");
-    ItemType LATEX = item("latex");
-    ItemType MEDKIT_GOLD = item("medkit_gold");
-    ItemType MEDKIT = item("medkit");
-    ItemType PICKAXE_ALUMINIUM = item("pickaxe_aluminium");
-    ItemType PICKAXE_IRON = item("pickaxe_iron");
-    ItemType PICKAXE_STONE = item("pickaxe_stone");
-    ItemType RUBBER_BALL = item("rubber_ball");
-    ItemType SHOVEL_ALUMINIUM = item("shovel_aluminium");
-    ItemType SHOVEL_IRON = item("shovel_iron");
-    ItemType SHOVEL_STONE = item("shovel_stone");
-    ItemType STICK = item("stick");
-
     /**
      * Gets the maximum stack size of this item type
      *
