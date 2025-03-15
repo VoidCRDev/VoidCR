@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/netty/NettyServer.java
 +++ b/finalforeach/cosmicreach/networking/netty/NettyServer.java
-@@ -47,7 +_,7 @@
+@@ -50,7 +_,7 @@
           if (account != null) {
              Logger.info(account.getUsername() + ": " + messageText);
           } else {
@@ -9,16 +9,16 @@
           }
        }
     };
-@@ -86,6 +_,7 @@
+@@ -89,6 +_,7 @@
                 .option(ChannelOption.SO_BACKLOG, 128))
              .childOption(ChannelOption.SO_KEEPALIVE, true);
           this.channelFuture = b.bind(this.port).sync();
 +         /* VoidCR start - smart console
-          BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
           String inputString = null;
           Logger.info("Server started, type 'stop' to shutdown and 'help' for commands.");
-@@ -95,6 +_,13 @@
-             this.processCommand(inputString);
+ 
+@@ -101,6 +_,13 @@
+             }
           }
  
 +          */

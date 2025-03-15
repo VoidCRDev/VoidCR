@@ -8,7 +8,7 @@
     public static NettyServer SERVER;
     private static ObjectMap<NetworkIdentity, Account> netIdsToAccounts = new ObjectMap();
     private static ObjectMap<Account, NetworkIdentity> accountsToNetIds = new ObjectMap();
-@@ -104,6 +_,7 @@
+@@ -108,6 +_,7 @@
        Zone zone = player.getZone();
        zone.addPlayer(player);
        world.players.add(player);
@@ -16,7 +16,7 @@
        ArrayIterator var5 = world.players.iterator();
  
        while (var5.hasNext()) {
-@@ -159,10 +_,12 @@
+@@ -163,10 +_,12 @@
           world.currentWorldTick++;
           if (SERVER != null) {
              SERVER.broadcastToAll(new EndTickPacket(world.currentWorldTick));
@@ -29,7 +29,7 @@
     }
  
     private static void registerBlockEntityScreenOpener(String blockEntityId, Consumer<BlockEntityScreenInfo> info) {
-@@ -171,22 +_,28 @@
+@@ -175,22 +_,28 @@
  
     private static void registerBlockEntityOpeners() {
        registerBlockEntityScreenOpener("base:container", info -> {

@@ -26,7 +26,7 @@
                          BlockEventTrigger[] triggers = this.targetBlockState.getTrigger("onPlace");
                          if (triggers != null) {
                             BlockEventArgs args = new BlockEventArgs();
-@@ -87,6 +_,7 @@
+@@ -88,6 +_,7 @@
                 }
              }
           }

@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/packets/MessagePacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/MessagePacket.java
-@@ -56,6 +_,15 @@
+@@ -55,6 +_,15 @@
           }
  
           Account accountx = ServerSingletons.getAccount(identity);
@@ -16,7 +16,7 @@
           String logMessage = "Chat from "
              + accountx.getUniqueId()
              + " | "
-@@ -76,7 +_,14 @@
+@@ -75,7 +_,14 @@
  
           Logger.info(logMessage);
           this.playerUniqueId = accountx.getUniqueId();

@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/packets/blocks/BreakBlockPacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/blocks/BreakBlockPacket.java
-@@ -12,6 +_,7 @@
+@@ -11,6 +_,7 @@
  import finalforeach.cosmicreach.world.Zone;
  import io.netty.buffer.ByteBuf;
  import io.netty.channel.ChannelHandlerContext;
@@ -8,7 +8,7 @@
  
  public class BreakBlockPacket extends GamePacket {
     Zone zone;
-@@ -50,6 +_,16 @@
+@@ -49,6 +_,16 @@
                 identity.send(new BlockReplacePacket(this.zone, actualCurrentBlockState, this.blockPos));
              }
           } else {
@@ -26,7 +26,7 @@
              }
  
 @@ -63,6 +_,7 @@
-                args.run(triggers);
+                args.runScheduledTriggers();
              }
           }
 +         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerBreakBlock(identity, this.blockPos, this.brokenBlockState); // VoidCR call PostPlayerBlockBreakEvent

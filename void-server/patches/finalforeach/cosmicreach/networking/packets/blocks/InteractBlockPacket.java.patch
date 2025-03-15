@@ -1,14 +1,14 @@
 --- a/finalforeach/cosmicreach/networking/packets/blocks/InteractBlockPacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/blocks/InteractBlockPacket.java
-@@ -59,6 +_,7 @@
+@@ -58,6 +_,7 @@
  
     @Override
     public void handle(NetworkIdentity identity, ChannelHandlerContext ctx) {
 +      boolean hasCalled = false; // VoidCR has called PrePlayerInteractBlockEvent event
-       if (identity.getSide() != NetworkSide.CLIENT) {
+       if (!identity.isClient()) {
           Zone zone = identity.getZone();
           Player player = identity.getPlayer();
-@@ -76,6 +_,11 @@
+@@ -75,6 +_,11 @@
              if (this.iteractTarget != InteractBlockPacket.IteractTarget.IGNORE_BLOCK_ENTITY) {
                 BlockEntity blockEntity = this.blockPos.getBlockEntity();
                 if (blockEntity != null) {
@@ -20,7 +20,7 @@
                    blockEntity.onInteract(player, zone);
                 }
              }
-@@ -89,6 +_,12 @@
+@@ -88,6 +_,12 @@
                 identity.send(new ContainerSyncPacket(0, player.inventory));
              }
           } else {
@@ -34,7 +34,7 @@
              if (triggers != null) {
                 BlockEventArgs args = new BlockEventArgs();
 @@ -99,6 +_,7 @@
-                args.run(triggers);
+                args.runScheduledTriggers();
              }
           }
 +         if (blockPos != null) sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerInteractBlock(identity, this.blockPos, this.blockState); // VoidCR - PostPlayerInteractBlockEvent

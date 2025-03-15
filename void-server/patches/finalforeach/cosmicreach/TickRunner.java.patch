@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/TickRunner.java
 +++ b/finalforeach/cosmicreach/TickRunner.java
-@@ -52,7 +_,7 @@
+@@ -60,7 +_,7 @@
  
        if (GameSingletons.getNumberOfPlayers() == 0 && !GameSingletons.isClient) {
           synchronized (this.thread) {

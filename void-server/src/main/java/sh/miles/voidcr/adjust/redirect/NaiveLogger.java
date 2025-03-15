@@ -23,6 +23,10 @@ public final class NaiveLogger {
         LOGGER.error(message);
     }
 
+    public static void error(Object message, Throwable ex) {
+        LOGGER.error(message, ex);
+    }
+
     public static void debug(Object message) {
         LOGGER.error(message);
     }

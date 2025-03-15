@@ -1,56 +1,45 @@
 --- a/finalforeach/cosmicreach/entities/Entity.java
 +++ b/finalforeach/cosmicreach/entities/Entity.java
-@@ -46,6 +_,9 @@
+@@ -43,6 +_,10 @@
     private static final BlockPosition tmpBlockPos1 = new BlockPosition(null, 0, 0, 0);
     private static final BlockPosition tmpBlockPos2 = new BlockPosition(null, 0, 0, 0);
     private static EntityPositionPacket positionPacket = new EntityPositionPacket();
 +   // VoidCR start - Extra Fields
 +   public int maxInvulnerabilityFrames = 5;
++   public int invulnerabilityFrames = 5;
 +   // VoidCR end - Extra Fields
-    public boolean shouldSaveInChunks = true;
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
-@@ -282,19 +_,31 @@
-    public boolean hasTag(GameTag tag) {
-       return this.tags == null ? false : this.tags.contains(tag);
+    @CRBSerialized
+@@ -160,11 +_,16 @@
     }
--
-+   // VoidCR start - add method parameter to carry through sourceEntity
-    public void hit(float amount) {
-+      hit(amount, null);
-+   }
-+   public void hit(float amount, Entity sourceEntity) {
+ 
+    public boolean recentlyHit() {
+-      return this.zone.currentZoneTick - this.lastHitTick < 5L;
++      return this.zone.currentZoneTick - this.lastHitTick < invulnerabilityFrames; // VoidCR allow invulnerability frames
+    }
+ 
+    public void hit(IDamageSource damageSource, float amount) {
        if (amount != 0.0F) {
-+         if (sourceEntity != null && sourceEntity.isDead()) return; // fix event trigger while dead
-+         if (sourceEntity instanceof finalforeach.cosmicreach.entities.player.PlayerEntity pentity && pentity.getPlayer().gamemode.canInstantBreak() && sh.miles.voidcr.impl.server.VoidServer.SERVER.getConfiguration().behaviorChanges().creativeInstantKill()) amount = Integer.MAX_VALUE;
-+         final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityDamage(amount, maxInvulnerabilityFrames, sourceEntity, this);
++         // VoidCR start - call VoidPreEntityDamageEvent
++         final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityDamage(amount, maxInvulnerabilityFrames, (Entity) damageSource, this);
 +         if (event != null && event.isCanceled()) return;
 +         amount = event == null ? amount : event.getDamage();
-+         // VoidCR end - add method parameter to carry through sourceEntity
-+
++         // VoidCR end - call VoidPreEntityDamageEvent
           if (ServerSingletons.SERVER != null) {
              ServerSingletons.SERVER.broadcast(this.zone, new HitEntityPacket(this, amount));
           }
--
+@@ -172,9 +_,13 @@
           if (amount < 0.0F) {
              this.hitpoints = Math.min(this.hitpoints - amount, this.maxHitpoints);
-          } else if (this.getPendingDamage() == 0.0F && this.invulnerabiltyFrames <= 0) {
+          } else if (this.getPendingDamage() == 0.0F && !this.recentlyHit()) {
 +            // VoidCR start - PreEntityDamageEvent
              this.setPendingDamage(Math.max(this.getPendingDamage(), amount));
--            this.invulnerabiltyFrames = 5;
-+            this.invulnerabiltyFrames = event == null ? maxInvulnerabilityFrames : event.getInvulnerabilityFrames(); // apply max invulnerability frames
+             this.lastHitTick = this.zone.currentZoneTick;
++            this.invulnerabilityFrames = event == null ? maxInvulnerabilityFrames : event.getInvulnerabilityFrames(); // apply max invulnerability frames
 +            // VoidCR end - PreEntityDamageEvent
           }
-+         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityDamage(this.pendingDamage, this.invulnerabiltyFrames, sourceEntity, this); // VoidCR - PostEntityDamageEvent
++         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityDamage(this.pendingDamage, this.invulnerabilityFrames, (Entity) damageSource, this); // VoidCR - PostEntityDamageEvent
        }
     }
  
-@@ -321,7 +_,7 @@
-    }
- 
-    public void onAttackInteraction(Entity sourceEntity) {
--      this.hit(1.0F);
-+      this.hit(1.0F, sourceEntity); // VoidCR provide sourceEntity
-    }
- 
-    public void onCollideWithBlock(Axis axis, BlockState block, int bx, int by, int bz) {

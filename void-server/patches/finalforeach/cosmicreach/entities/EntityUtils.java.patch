@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/EntityUtils.java
 +++ b/finalforeach/cosmicreach/entities/EntityUtils.java
-@@ -42,7 +_,7 @@
+@@ -59,7 +_,7 @@
           Player p = (Player)players.get(i);
           if (p != null && (canTarget == null || canTarget.test(p))) {
              Entity pe = p.getEntity();

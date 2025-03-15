@@ -105,6 +105,11 @@ public interface BlockTypes {
     BlockType LASER_EMITTER = get("laser_emitter");
 
     /**
+     * Generated {@link BlockType} with the id "base:laser_switch"
+     */
+    BlockType LASER_SWITCH = get("laser_switch");
+
+    /**
      * Generated {@link BlockType} with the id "base:leaves"
      */
     BlockType LEAVES = get("leaves");

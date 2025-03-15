@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/util/logging/Logger.java
 +++ b/finalforeach/cosmicreach/util/logging/Logger.java
-@@ -35,20 +_,24 @@
+@@ -35,29 +_,35 @@
     }
  
     public static void info(Object message) {
@@ -18,7 +18,21 @@
     public static void error(Object message) {
 -      log(Logger.Level.ERROR, message.toString());
 +      sh.miles.voidcr.adjust.redirect.NaiveLogger.error(message); // VoidCR - better logging
-+      // log(Logger.Level.ERROR, message.toString());
++      // log(Logger.Level.INFO, message.toString());
+    }
+ 
+    public static void error(Throwable ex) {
+-      ex.printStackTrace();
++      sh.miles.voidcr.adjust.redirect.NaiveLogger.error(ex); // VoidCR - better logging
++      // log(Logger.Level.WARNING, message.toString());
+    }
+ 
+    public static void error(Object message, Throwable ex) {
+-      log(Logger.Level.ERROR, message.toString());
+-      ex.printStackTrace();
++      sh.miles.voidcr.adjust.redirect.NaiveLogger.error(message, ex); // VoidCR - better logging
++      /*ex.printStackTrace();
++      log(Logger.Level.ERROR, message.toString());*/
     }
  
     public static void debug(Object message) {
