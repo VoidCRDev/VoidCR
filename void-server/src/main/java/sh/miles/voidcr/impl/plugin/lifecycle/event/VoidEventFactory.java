@@ -6,8 +6,13 @@ import finalforeach.cosmicreach.accounts.Account;
 import finalforeach.cosmicreach.blockentities.BlockEntitySign;
 import finalforeach.cosmicreach.blocks.BlockPosition;
 import finalforeach.cosmicreach.blocks.BlockState;
+import finalforeach.cosmicreach.entities.IDamageSource;
 import finalforeach.cosmicreach.entities.player.Player;
+import finalforeach.cosmicreach.items.ItemSlot;
+import finalforeach.cosmicreach.items.ItemStack;
+import finalforeach.cosmicreach.items.containers.SlotContainer;
 import finalforeach.cosmicreach.networking.NetworkIdentity;
+import finalforeach.cosmicreach.networking.packets.items.SlotInteractionType;
 import finalforeach.cosmicreach.world.World;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.post.VoidPostPlayerChatEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.pre.VoidPrePlayerChatEvent;
@@ -25,7 +30,9 @@ import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.post.VoidPostPlay
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.pre.VoidPrePlayerBreakBlockEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.pre.VoidPrePlayerInteractBlockEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.pre.VoidPrePlayerPlaceBlockEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.world.inventory.container.pre.VoidPrePlayerItemContainerInteractEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.pre.VoidPreUniverseEndTickEvent;
+import sh.miles.voidcr.impl.world.inventory.item.VoidItemStack;
 
 import static sh.miles.voidcr.impl.plugin.lifecycle.VoidLifecycleManager.dispatchEvent;
 
@@ -35,12 +42,12 @@ public final class VoidEventFactory {
         throw new UnsupportedOperationException("Can not create instance of utility class VoidEventFactory");
     }
 
-    public static VoidPreEntityDamageEvent preEntityDamage(float damage, int invulnerabilityFrames, finalforeach.cosmicreach.entities.Entity damager, finalforeach.cosmicreach.entities.Entity effected) {
-        return dispatchEvent(ctx -> new VoidPreEntityDamageEvent(ctx, effected, effected.zone, invulnerabilityFrames, damage, damager));
+    public static VoidPreEntityDamageEvent preEntityDamage(float damage, int invulnerabilityFrames, IDamageSource source, finalforeach.cosmicreach.entities.Entity effected) {
+        return dispatchEvent(ctx -> new VoidPreEntityDamageEvent(ctx, effected, invulnerabilityFrames, damage, source));
     }
 
-    public static void postEntityDamage(float damage, int invulnerabilityFrames, finalforeach.cosmicreach.entities.Entity damager, finalforeach.cosmicreach.entities.Entity effected) {
-        dispatchEvent(ctx -> new VoidPostEntityDamageEvent(ctx, effected, effected.zone, invulnerabilityFrames, damage, damager));
+    public static void postEntityDamage(float damage, int invulnerabilityFrames, IDamageSource source, finalforeach.cosmicreach.entities.Entity effected) {
+        dispatchEvent(ctx -> new VoidPostEntityDamageEvent(ctx, effected, invulnerabilityFrames, damage, source));
     }
 
     public static VoidPrePlayerSignUpdateEvent prePlayerSignUpdate(NetworkIdentity actor, BlockEntitySign sign, String[] lines, float fontSize, int color) {
@@ -108,5 +115,10 @@ public final class VoidEventFactory {
 
     public static void postAccountJoin(Account account) {
         dispatchEvent(ctx -> new VoidPostAccountJoinEvent(ctx, account));
+    }
+
+    public static VoidPrePlayerItemContainerInteractEvent prePlayerItemContainerInteract(Player player, ItemSlot slot, SlotInteractionType interactionType) {
+        final ItemStack item = slot.getItemStack() == null ? VoidItemStack.EMPTY.get() : slot.getItemStack();
+        return dispatchEvent(ctx -> new VoidPrePlayerItemContainerInteractEvent(ctx, slot.getContainer(), slot.getSlotId(), player, interactionType, item));
     }
 }

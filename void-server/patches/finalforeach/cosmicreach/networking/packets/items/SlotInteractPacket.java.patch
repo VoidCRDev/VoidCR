@@ -1,0 +1,21 @@
+--- a/finalforeach/cosmicreach/networking/packets/items/SlotInteractPacket.java
++++ b/finalforeach/cosmicreach/networking/packets/items/SlotInteractPacket.java
+@@ -57,6 +_,18 @@
+          if (container != null) {
+             ItemSlot slot = container.getSlot(this.slotId);
+             if (slot != null) {
++               // VoidCR - Start pre slot interaction event
++               final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerItemContainerInteract(player, slot, interactionType);
++               if (event != null) {
++                  slot.setItemStack(event.getActualItemStack().normalize());
++
++                  if (event.isCanceled()) { // resync back on cancel
++                     player.cursor.syncDirtySlots(2, identity);
++                     container.syncDirtySlots(this.windowId, identity);
++                     return;
++                  }
++               }
++               // VoidCR - end pre slot interaction event
+                switch (this.interactionType) {
+                   case CURSOR_SWAP:
+                      ItemSlotInteractions.swapCursorAction(player, this.windowId, slot);

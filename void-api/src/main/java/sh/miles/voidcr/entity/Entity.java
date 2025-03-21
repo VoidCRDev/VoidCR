@@ -2,6 +2,7 @@ package sh.miles.voidcr.entity;
 
 import sh.miles.voidcr.plugin.lifecycle.event.entity.pre.PreEntityDamageEvent;
 import sh.miles.voidcr.world.World;
+import sh.miles.voidcr.world.damage.DamageSource;
 import sh.miles.voidcr.world.position.Position;
 import sh.miles.voidcr.world.position.Vector;
 
@@ -10,7 +11,7 @@ import sh.miles.voidcr.world.position.Vector;
  *
  * @since 0.3.14
  */
-public interface Entity {
+public interface Entity extends DamageSource {
 
     /**
      * Teleports this entity to some position

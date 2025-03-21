@@ -1,6 +1,7 @@
 package sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre;
 
 import finalforeach.cosmicreach.entities.Entity;
+import finalforeach.cosmicreach.entities.IDamageSource;
 import finalforeach.cosmicreach.world.Zone;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.VoidEntityDamageEvent;
 import sh.miles.voidcr.plugin.lifecycle.event.LifecycleEvent;
@@ -11,8 +12,8 @@ public final class VoidPreEntityDamageEvent extends VoidEntityDamageEvent implem
 
     private boolean canceled = false;
 
-    public VoidPreEntityDamageEvent(final Server ctx, final Entity entity, final Zone zone, final int invulnerabilityFrames, final float damage, final Entity damager) {
-        super(ctx, entity, zone, invulnerabilityFrames, damage, damager);
+    public VoidPreEntityDamageEvent(final Server ctx, final Entity entity, final int invulnerabilityFrames, final float damage, final IDamageSource source) {
+        super(ctx, entity, invulnerabilityFrames, damage, source);
     }
 
     @Override

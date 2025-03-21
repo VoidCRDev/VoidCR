@@ -40,4 +40,15 @@ public final class VoidNamedRegistry<E extends Keyed> extends VoidRegistry<E, Na
         registry.freeze();
         return registry;
     }
+
+    public static <E extends Keyed, I> VoidNamedRegistry<E> fromEnumSource(Class<I> provision, Function<I, E> map) {
+        final VoidNamedRegistry<E> registry = new VoidNamedRegistry<>();
+        assert provision.isEnum();
+        for (final I constant : provision.getEnumConstants()) {
+            registry.register(map.apply(constant));
+        }
+
+        registry.freeze();
+        return registry;
+    }
 }

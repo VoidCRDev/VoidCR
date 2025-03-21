@@ -1,13 +1,19 @@
 package sh.miles.voidcr.impl.world.inventory.item;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Suppliers;
+import finalforeach.cosmicreach.items.Item;
 import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.util.Mirrored;
 import sh.miles.voidcr.world.inventory.item.ItemProperty;
 import sh.miles.voidcr.world.inventory.item.ItemStack;
 import sh.miles.voidcr.world.inventory.item.ItemType;
 
+import java.util.function.Supplier;
+
 public final class VoidItemStack implements ItemStack, Mirrored<finalforeach.cosmicreach.items.ItemStack> {
+
+    public static Supplier<finalforeach.cosmicreach.items.ItemStack> EMPTY = Suppliers.memoize(() -> new finalforeach.cosmicreach.items.ItemStack(Item.getItem("base:air")));
 
     private final finalforeach.cosmicreach.items.ItemStack mirror;
 
