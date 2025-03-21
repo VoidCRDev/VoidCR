@@ -2,12 +2,15 @@ package sh.miles.voidcr.impl.server.registry;
 
 import finalforeach.cosmicreach.blocks.Block;
 import finalforeach.cosmicreach.items.ItemThing;
+import finalforeach.cosmicreach.networking.packets.items.SlotInteractionType;
 import sh.miles.voidcr.impl.util.collection.VoidRegistry;
 import sh.miles.voidcr.impl.world.block.VoidBlockType;
+import sh.miles.voidcr.impl.world.inventory.container.VoidItemContainerInteraction;
 import sh.miles.voidcr.impl.world.inventory.item.VoidItemProperties;
 import sh.miles.voidcr.impl.world.inventory.item.VoidItemType;
 import sh.miles.voidcr.server.registry.Registries;
 import sh.miles.voidcr.world.block.BlockType;
+import sh.miles.voidcr.world.inventory.container.ItemContainerInteraction;
 import sh.miles.voidcr.world.inventory.item.ItemProperty;
 import sh.miles.voidcr.world.inventory.item.ItemType;
 
@@ -20,6 +23,10 @@ public final class VoidRegistries implements Registries {
 
         if (apiClass == ItemType.class) {
             return VoidNamedRegistry.fromGdxNaiveInternalSource(ItemThing.allItems.values().toArray(), VoidItemType::new);
+        }
+
+        if (apiClass == ItemContainerInteraction.class) {
+            return VoidNamedRegistry.fromEnumSource(SlotInteractionType.class, VoidItemContainerInteraction::new);
         }
 
         if (apiClass == ItemProperty.class) {
