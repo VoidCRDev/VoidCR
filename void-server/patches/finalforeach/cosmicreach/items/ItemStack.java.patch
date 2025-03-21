@@ -1,0 +1,14 @@
+--- a/finalforeach/cosmicreach/items/ItemStack.java
++++ b/finalforeach/cosmicreach/items/ItemStack.java
+@@ -14,6 +_,11 @@
+ import sh.miles.voidcr.impl.world.inventory.item.VoidItemStack;
+ 
+ public class ItemStack implements ICRBinSerializable {
++   // VoidCR start - add utility methods to ItemStack
++   public ItemStack normalize() {
++      return this.item.getID().contains("air") ? null : this;
++   }
++   // VoidCR end - add utility methods to ItemStack
+    public int stackLimit = 1000;
+    private Item item;
+    public int amount;

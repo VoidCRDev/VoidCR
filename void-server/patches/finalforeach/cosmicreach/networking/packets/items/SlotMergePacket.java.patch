@@ -1,0 +1,21 @@
+--- a/finalforeach/cosmicreach/networking/packets/items/SlotMergePacket.java
++++ b/finalforeach/cosmicreach/networking/packets/items/SlotMergePacket.java
+@@ -58,6 +_,18 @@
+          if (containerSrc != null && containerDst != null) {
+             ItemSlot slot = containerSrc.getSlot(this.slotIdSrc);
+             if (slot != null) {
++               // VoidCR - Start pre slot interaction event
++               final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerItemContainerInteract(player, slot, SlotInteractionType.SLOT_MERGE);
++               if (event != null) {
++                  slot.setItemStack(event.getActualItemStack().normalize());
++
++                  if (event.isCanceled()) { // resync back on cancel
++                     containerSrc.syncDirtySlots(this.windowIdSrc, identity);
++                     containerDst.syncDirtySlots(this.windowIdDst, identity);
++                     return;
++                  }
++               }
++               // VoidCR - end pre slot interaction event
+                ItemSlotInteractions.shiftIntoAction(player, this.windowIdSrc, slot, containerDst);
+                containerSrc.syncDirtySlots(this.windowIdSrc, identity);
+                containerDst.syncDirtySlots(this.windowIdDst, identity);

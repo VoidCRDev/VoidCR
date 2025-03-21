@@ -1,0 +1,12 @@
+--- a/finalforeach/cosmicreach/networking/packets/items/SlotInteractionType.java
++++ b/finalforeach/cosmicreach/networking/packets/items/SlotInteractionType.java
+@@ -5,5 +_,8 @@
+    CURSOR_RIGHT,
+    CURSOR_SPREAD,
+    CURSOR_TRASH,
+-   ITEM_CYCLE;
++   ITEM_CYCLE, // VoidCR start - add more interaction types
++   SLOT_MERGE,
++   SLOT_SWAP,
++   // VoidCR end - add more interaction types
+ }

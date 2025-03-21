@@ -6,6 +6,7 @@ import sh.miles.voidcr.util.NamedKey;
 import sh.miles.voidcr.util.collection.KeyHolder;
 import sh.miles.voidcr.util.collection.Registry;
 import sh.miles.voidcr.world.block.BlockType;
+import sh.miles.voidcr.world.inventory.container.ItemContainerInteraction;
 import sh.miles.voidcr.world.inventory.item.ItemProperty;
 import sh.miles.voidcr.world.inventory.item.ItemType;
 
@@ -31,6 +32,17 @@ public interface Registries {
     NamedRegistry<ItemType> ITEM = namedRegistry(ItemType.class);
 
     /**
+     * The ItemContainerInteraction registry, does not support registration
+     * <p>
+     * Item Container Interactions are internally modeled as an enum, in order to maintain the longevity of this API
+     * they are instead modeled as a registry here. All keys for this registry are under {@link NamedKey#COSMIC_REACH}
+     * due to them being internally modeled, but not in this form.
+     *
+     * @since 0.4.1
+     */
+    NamedRegistry<ItemContainerInteraction> ITEM_CONTAINER_INTERACT = namedRegistry(ItemContainerInteraction.class);
+
+    /**
      * The Item Property registry, does not support registration
      * <p>
      * Item Properties themselves are not a concept internally, thus this registry is the invention of VoidCR itself,
@@ -41,6 +53,7 @@ public interface Registries {
      * @since 0.3.23
      */
     NamedRegistry<ItemProperty> ITEM_PROPERTY = namedRegistry(ItemProperty.class);
+
 
     private static <E extends Keyed> NamedRegistry<E> namedRegistry(Class<E> clazz) {
         return (NamedRegistry<E>) VoidCR.getMagic().getRegistry(clazz);

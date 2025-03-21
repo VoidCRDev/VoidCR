@@ -22,7 +22,7 @@
     public void hit(IDamageSource damageSource, float amount) {
        if (amount != 0.0F) {
 +         // VoidCR start - call VoidPreEntityDamageEvent
-+         final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityDamage(amount, maxInvulnerabilityFrames, (Entity) damageSource, this);
++         final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityDamage(amount, maxInvulnerabilityFrames, damageSource, this);
 +         if (event != null && event.isCanceled()) return;
 +         amount = event == null ? amount : event.getDamage();
 +         // VoidCR end - call VoidPreEntityDamageEvent
@@ -39,7 +39,7 @@
 +            this.invulnerabilityFrames = event == null ? maxInvulnerabilityFrames : event.getInvulnerabilityFrames(); // apply max invulnerability frames
 +            // VoidCR end - PreEntityDamageEvent
           }
-+         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityDamage(this.pendingDamage, this.invulnerabilityFrames, (Entity) damageSource, this); // VoidCR - PostEntityDamageEvent
++         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityDamage(this.pendingDamage, this.invulnerabilityFrames, damageSource, this); // VoidCR - PostEntityDamageEvent
        }
     }
  
