@@ -19,3 +19,11 @@
                 switch (this.interactionType) {
                    case CURSOR_SWAP:
                       ItemSlotInteractions.swapCursorAction(player, this.windowId, slot);
+@@ -82,6 +_,7 @@
+                }
+ 
+                container.syncDirtySlots(this.windowId, identity);
++               sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerItemContainerInteract(player, slot, interactionType); // VoidCR - post interact event
+             }
+          }
+       }

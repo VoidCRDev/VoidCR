@@ -1,6 +1,7 @@
 package sh.miles.voidcr.impl.plugin.lifecycle.event.world.inventory.container;
 
 import finalforeach.cosmicreach.entities.player.Player;
+import finalforeach.cosmicreach.items.ItemStack;
 import finalforeach.cosmicreach.items.containers.SlotContainer;
 import finalforeach.cosmicreach.networking.packets.items.SlotInteractionType;
 import sh.miles.voidcr.entity.PlayerEntity;
@@ -15,12 +16,14 @@ public abstract class VoidPlayerItemContainerInteractEvent extends VoidItemConta
     private final int slot;
     private final PlayerEntity player;
     private final ItemContainerInteraction interaction;
+    protected sh.miles.voidcr.world.inventory.item.ItemStack itemStack;
 
-    public VoidPlayerItemContainerInteractEvent(final Server context, final SlotContainer container, final int slot, final Player player, final SlotInteractionType interaction) {
+    public VoidPlayerItemContainerInteractEvent(final Server context, final SlotContainer container, final int slot, final Player player, final SlotInteractionType interaction, final ItemStack itemStack) {
         super(context, container);
         this.slot = slot;
         this.player = (PlayerEntity) player.getEntity().getVoidMirror();
         this.interaction = Registries.ITEM_CONTAINER_INTERACT.getOrThrow(NamedKey.cosmicReach(interaction.name().toLowerCase()));
+        this.itemStack = itemStack.getVoidMirror();
     }
 
     @Override
@@ -31,6 +34,11 @@ public abstract class VoidPlayerItemContainerInteractEvent extends VoidItemConta
     @Override
     public PlayerEntity getPlayer() {
         return this.player;
+    }
+
+    @Override
+    public sh.miles.voidcr.world.inventory.item.ItemStack getItem() {
+        return this.itemStack;
     }
 
     @Override

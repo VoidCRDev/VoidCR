@@ -30,6 +30,7 @@ import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.post.VoidPostPlay
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.pre.VoidPrePlayerBreakBlockEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.pre.VoidPrePlayerInteractBlockEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.pre.VoidPrePlayerPlaceBlockEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.world.inventory.container.post.VoidPostPlayerInteractContainerEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.inventory.container.pre.VoidPrePlayerItemContainerInteractEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.pre.VoidPreUniverseEndTickEvent;
 import sh.miles.voidcr.impl.world.inventory.item.VoidItemStack;
@@ -120,5 +121,10 @@ public final class VoidEventFactory {
     public static VoidPrePlayerItemContainerInteractEvent prePlayerItemContainerInteract(Player player, ItemSlot slot, SlotInteractionType interactionType) {
         final ItemStack item = slot.getItemStack() == null ? VoidItemStack.EMPTY.get() : slot.getItemStack();
         return dispatchEvent(ctx -> new VoidPrePlayerItemContainerInteractEvent(ctx, slot.getContainer(), slot.getSlotId(), player, interactionType, item));
+    }
+
+    public static void postPlayerItemContainerInteract(Player player, ItemSlot slot, SlotInteractionType interactionType) {
+        final ItemStack item = slot.getItemStack() == null ? VoidItemStack.EMPTY.get() : slot.getItemStack();
+        dispatchEvent(ctx -> new VoidPostPlayerInteractContainerEvent(ctx, slot.getContainer(), slot.getSlotId(), player, interactionType, item));
     }
 }
