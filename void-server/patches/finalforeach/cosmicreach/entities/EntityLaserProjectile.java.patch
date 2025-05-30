@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/EntityLaserProjectile.java
 +++ b/finalforeach/cosmicreach/entities/EntityLaserProjectile.java
-@@ -143,6 +_,7 @@
+@@ -145,6 +_,7 @@
                          while (var13.hasNext()) {
                             BoundingBox bb = (BoundingBox)var13.next();
                             if (bb.intersects(this.tmpEntityBoundingBox)) {

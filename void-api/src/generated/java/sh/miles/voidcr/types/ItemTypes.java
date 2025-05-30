@@ -45,6 +45,11 @@ public interface ItemTypes {
     ItemType INGOT_IRON = get("ingot_iron");
 
     /**
+     * Generated {@link ItemType} with the id "base:jetpack"
+     */
+    ItemType JETPACK = get("jetpack");
+
+    /**
      * Generated {@link ItemType} with the id "base:laser_gun"
      */
     ItemType LASER_GUN = get("laser_gun");
