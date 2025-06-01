@@ -175,6 +175,11 @@ public interface BlockTypes {
     BlockType ORE_IRON = get("ore_iron");
 
     /**
+     * Generated {@link BlockType} with the id "base:ore_ruby"
+     */
+    BlockType ORE_RUBY = get("ore_ruby");
+
+    /**
      * Generated {@link BlockType} with the id "base:piston"
      */
     BlockType PISTON = get("piston");
@@ -183,6 +188,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:rubber_block"
      */
     BlockType RUBBER_BLOCK = get("rubber_block");
+
+    /**
+     * Generated {@link BlockType} with the id "base:ruby_block"
+     */
+    BlockType RUBY_BLOCK = get("ruby_block");
 
     /**
      * Generated {@link BlockType} with the id "base:sand"
