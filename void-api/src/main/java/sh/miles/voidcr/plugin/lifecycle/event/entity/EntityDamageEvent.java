@@ -28,17 +28,6 @@ public interface EntityDamageEvent extends EntityEvent {
     float getDamage();
 
     /**
-     * Gets the targeted entity
-     *
-     * @return the targeted entity
-     * @since 0.3.22
-     * @deprecated now any {@link DamageSource} can trigger this event for removal in 3 versions
-     */
-    @Deprecated(since = "0.4.4", forRemoval = true)
-    @Nullable
-    Entity getDamager();
-
-    /**
      * Gets the damage source of this event, which could be an entity. see {@link DamageSource} for more information
      *
      * @return the damage source

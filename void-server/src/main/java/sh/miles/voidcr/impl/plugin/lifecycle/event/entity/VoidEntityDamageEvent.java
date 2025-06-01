@@ -36,11 +36,6 @@ public abstract class VoidEntityDamageEvent extends VoidEntityEvent implements E
     }
 
     @Override
-    public Entity getDamager() {
-        return this.damager;
-    }
-
-    @Override
     public DamageSource getDamageSource() {
         return this.source;
     }
