@@ -3,6 +3,7 @@ package sh.miles.voidcr.impl.world;
 import com.google.common.base.Preconditions;
 import finalforeach.cosmicreach.blocks.BlockPosition;
 import finalforeach.cosmicreach.world.BlockSetter;
+import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.impl.world.block.VoidBlockState;
 import sh.miles.voidcr.util.Mirrored;
@@ -14,6 +15,7 @@ import sh.miles.voidcr.world.position.BlockPos;
 import java.util.Collection;
 import java.util.List;
 
+@NullMarked
 public class VoidChunk implements Chunk, Mirrored<finalforeach.cosmicreach.world.Chunk> {
 
     private final finalforeach.cosmicreach.world.Chunk mirror;

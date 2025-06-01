@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/packets/items/SlotSwapPacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/items/SlotSwapPacket.java
-@@ -63,9 +_,22 @@
+@@ -52,9 +_,22 @@
              ItemSlot slotSrc = containerSrc.getSlot(this.slotIdSrc);
              ItemSlot slotDst = containerSrc.getSlot(this.slotIdDst);
              if (slotSrc != null && slotDst != null) {

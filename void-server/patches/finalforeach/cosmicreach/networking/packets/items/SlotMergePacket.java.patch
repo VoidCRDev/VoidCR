@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/packets/items/SlotMergePacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/items/SlotMergePacket.java
-@@ -58,9 +_,22 @@
+@@ -47,9 +_,22 @@
           if (containerSrc != null && containerDst != null) {
              ItemSlot slot = containerSrc.getSlot(this.slotIdSrc);
              if (slot != null) {

@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/items/containers/SlotContainer.java
 +++ b/finalforeach/cosmicreach/items/containers/SlotContainer.java
-@@ -23,6 +_,11 @@
+@@ -24,6 +_,11 @@
  import sh.miles.voidcr.impl.world.inventory.container.VoidItemContainer;
  
  public class SlotContainer implements Serializable, ISlotContainer, ICRBinSerializable {
@@ -10,13 +10,13 @@
 +   public SlotContainer(int numSlots, Object owner, int windowId) { this.numberOfSlots = numSlots; this.owner = owner; this.windowId = windowId; }
 +   // VoidCR end - allow easier managing of slot containers
     private IDynamicArray<ItemSlot> slots = DynamicArrays.<ItemSlot>getNew(ItemSlot.class);
+    public ISlotContainerParent parent;
     public int numberOfSlots;
-    private transient VoidItemContainer cache;
-@@ -181,6 +_,7 @@
+@@ -183,6 +_,7 @@
     }
  
     public void onItemSlotUpdate(ItemSlot itemSlot) {
 +      getVoidMirror().syncSlot(itemSlot); // VoidCR - always send data to remote
-    }
- 
-    @Override
+       if (this.parent != null) {
+          this.parent.onItemSlotUpdate(this, itemSlot);
+       }

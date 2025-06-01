@@ -1,0 +1,15 @@
+--- a/finalforeach/cosmicreach/blockentities/BlockEntityFurnace.java
++++ b/finalforeach/cosmicreach/blockentities/BlockEntityFurnace.java
+@@ -27,6 +_,12 @@
+ import java.util.function.Predicate;
+ 
+ public class BlockEntityFurnace extends BlockEntity implements IBlockEntityWithContainer, IBlockEntityFurnace {
++   // VoidCR add fetcher
++   @Override
++   public sh.miles.voidcr.impl.world.block.entity.VoidBlockEntity<?> getVoidMirror() {
++      return cache == null ? cache = new sh.miles.voidcr.impl.world.block.entity.VoidBlockEntityFurnace(this) : cache;
++   }
++   // VoidCR add fetcher
+    public static final String BLOCK_ENTITY_ID = "base:furnace";
+    public static final String FUEL_PROPERTY_NAME = "fuelTicks";
+    public static final int MAX_PROGRESS_TICKS = 64;

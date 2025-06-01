@@ -12,7 +12,7 @@
     public EquipmentContainer equipment = new EquipmentContainer();
     public boolean isSprinting;
     public boolean isProne;
-@@ -61,6 +_,8 @@
+@@ -62,6 +_,8 @@
     public void setEntity(Entity entity) {
        this.entity = entity;
        if (entity != null) {
@@ -21,7 +21,7 @@
           this.entity.localBoundingBox.set(this.standingBoundingBox);
           this.entity.viewPositionOffset.set(this.standingViewPositionOffset);
        }
-@@ -253,6 +_,11 @@
+@@ -254,6 +_,11 @@
        if (jsonData.has("inventory")) {
           try {
              this.inventory = (SlotContainer)json.readValue("inventory", SlotContainer.class, jsonData);

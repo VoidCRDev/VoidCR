@@ -1,0 +1,15 @@
+--- a/finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator.java
++++ b/finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator.java
+@@ -14,6 +_,12 @@
+ import finalforeach.cosmicreach.world.Zone;
+ 
+ public class BlockEntityElectricGenerator extends CustomUIBlockEntity implements IPowerProducer {
++   // VoidCR add fetcher
++   @Override
++   public sh.miles.voidcr.impl.world.block.entity.VoidBlockEntity<?> getVoidMirror() {
++      return cache == null ? cache = new sh.miles.voidcr.impl.world.block.entity.VoidBlockEntityElectricGenerator(this) : cache;
++   }
++   // VoidCR add fetcher
+    public static final String BLOCK_ENTITY_ID = "base:electric_generator";
+    public static final String FUEL_PROPERTY_NAME = "fuelTicks";
+    public int powerCapacityJoules;

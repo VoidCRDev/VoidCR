@@ -16,7 +16,9 @@ repositories {
 dependencies {
     implementation(libs.jspecify)
     implementation(libs.javapoet)
-    implementation(libs.crdatalib)
+    implementation(libs.crdatalib) {
+        isChanging = true
+    }
     implementation(project(":void-api"))
 }
 

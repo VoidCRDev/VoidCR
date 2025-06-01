@@ -70,6 +70,16 @@ public interface BlockTypes {
     BlockType DIRT = get("dirt");
 
     /**
+     * Generated {@link BlockType} with the id "base:electric_furnace"
+     */
+    BlockType ELECTRIC_FURNACE = get("electric_furnace");
+
+    /**
+     * Generated {@link BlockType} with the id "base:electric_generator"
+     */
+    BlockType ELECTRIC_GENERATOR = get("electric_generator");
+
+    /**
      * Generated {@link BlockType} with the id "base:furnace"
      */
     BlockType FURNACE = get("furnace");

@@ -6,6 +6,10 @@ public finalforeach/cosmicreach/chat/commands/Command REGISTERED_ALIAS_COMMANDS
 public finalforeach/cosmicreach/chat/commands/Command REGISTERED_COMMAND_ALIAS_LIST
 public finalforeach/cosmicreach/chat/commands/Command args
 
+public finalforeach/cosmicreach/blockentities/BlockEntityElectricFurnace progressTicks
+public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator powerAmountJoules
+public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator maxFuelTicks
+public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator fuelTicks
 public finalforeach/cosmicreach/blockentities/BlockEntityFurnace progressTicks
 public finalforeach/cosmicreach/blockentities/BlockEntityFurnace maxFuelTicks
 public finalforeach/cosmicreach/blockentities/BlockEntityFurnace fuelTicks
@@ -40,10 +44,11 @@ sh/miles/voidcr/impl/world/VoidWorld finalforeach/cosmicreach/world/Zone
 
 sh/miles/voidcr/impl/world/block/VoidBlockState finalforeach/cosmicreach/blocks/BlockState
 
-sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityCrate finalforeach/cosmicreach/blockentities/BlockEntityItemContainer
-sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityFurnace finalforeach/cosmicreach/blockentities/BlockEntityFurnace
-sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityLaserEmitter finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter
-sh/miles/voidcr/impl/world/block/entity/VoidBlockEntitySign finalforeach/cosmicreach/blockentities/BlockEntitySign
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityCrate finalforeach/cosmicreach/blockentities/BlockEntityItemContainer
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityFurnace finalforeach/cosmicreach/blockentities/BlockEntityFurnace
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityElectricGenerator finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityLaserEmitter finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntitySign finalforeach/cosmicreach/blockentities/BlockEntitySign
 
 sh/miles/voidcr/impl/world/inventory/container/VoidItemContainer finalforeach/cosmicreach/items/containers/SlotContainer
 
