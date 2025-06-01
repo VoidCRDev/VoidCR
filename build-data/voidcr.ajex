@@ -16,6 +16,9 @@ public finalforeach/cosmicreach/blockentities/BlockEntityFurnace fuelTicks
 public finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter willShoot
 
 public finalforeach/cosmicreach/entities/Entity sightRange
+public finalforeach/cosmicreach/entities/EntityFlameProjectile radius
+public finalforeach/cosmicreach/entities/EntityFlameProjectile sourceEntityId
+public finalforeach/cosmicreach/entities/EntityFlameProjectile strength
 public finalforeach/cosmicreach/entities/EntityLaserProjectile radius
 public finalforeach/cosmicreach/entities/EntityLaserProjectile sourceEntityId
 public finalforeach/cosmicreach/entities/EntityLaserProjectile strength
@@ -33,7 +36,8 @@ public finalforeach/cosmicreach/world/Chunk blockEntities
 
 sh/miles/voidcr/impl/entity/VoidDroneTrapEntity finalforeach/cosmicreach/entities/DroneTrapEntity
 sh/miles/voidcr/impl/entity/VoidEntity finalforeach/cosmicreach/entities/Entity
-sh/miles/voidcr/impl/entity/VoidProjectileEntity finalforeach/cosmicreach/entities/EntityLaserProjectile
+sh/miles/voidcr/impl/entity/VoidFlameProjectileEntity finalforeach/cosmicreach/entities/EntityFlameProjectile
+sh/miles/voidcr/impl/entity/VoidLaserProjectileEntity finalforeach/cosmicreach/entities/EntityLaserProjectile
 sh/miles/voidcr/impl/entity/VoidPlayerEntity finalforeach/cosmicreach/entities/player/PlayerEntity
 
 sh/miles/voidcr/impl/server/network/VoidAccount finalforeach/cosmicreach/accounts/Account

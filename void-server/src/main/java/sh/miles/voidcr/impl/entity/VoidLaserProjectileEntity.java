@@ -6,9 +6,9 @@ import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.EntityIdentifier;
 import sh.miles.voidcr.entity.ProjectileEntity;
 
-public class VoidProjectileEntity extends VoidEntity implements ProjectileEntity {
+public class VoidLaserProjectileEntity extends VoidEntity implements ProjectileEntity {
 
-    public VoidProjectileEntity(final EntityLaserProjectile mirror) {
+    public VoidLaserProjectileEntity(final EntityLaserProjectile mirror) {
         super(mirror);
     }
 
