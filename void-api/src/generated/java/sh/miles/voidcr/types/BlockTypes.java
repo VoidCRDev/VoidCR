@@ -45,6 +45,11 @@ public interface BlockTypes {
     BlockType CHEESE = get("cheese");
 
     /**
+     * Generated {@link BlockType} with the id "base:clay"
+     */
+    BlockType CLAY = get("clay");
+
+    /**
      * Generated {@link BlockType} with the id "base:coal"
      */
     BlockType COAL = get("coal");
@@ -170,6 +175,11 @@ public interface BlockTypes {
     BlockType ORE_IRON = get("ore_iron");
 
     /**
+     * Generated {@link BlockType} with the id "base:piston"
+     */
+    BlockType PISTON = get("piston");
+
+    /**
      * Generated {@link BlockType} with the id "base:rubber_block"
      */
     BlockType RUBBER_BLOCK = get("rubber_block");
@@ -208,6 +218,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:stone_limestone"
      */
     BlockType STONE_LIMESTONE = get("stone_limestone");
+
+    /**
+     * Generated {@link BlockType} with the id "base:stone_shale"
+     */
+    BlockType STONE_SHALE = get("stone_shale");
 
     /**
      * Generated {@link BlockType} with the id "base:text_display"

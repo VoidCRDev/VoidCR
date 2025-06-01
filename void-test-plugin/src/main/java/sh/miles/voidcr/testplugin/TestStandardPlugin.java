@@ -2,6 +2,7 @@ package sh.miles.voidcr.testplugin;
 
 import org.jspecify.annotations.NullMarked;
 import sh.miles.voidcr.entity.PlayerEntity;
+import sh.miles.voidcr.plugin.lifecycle.event.entity.pre.PreEntityUseJetpackEvent;
 import sh.miles.voidcr.plugin.lifecycle.event.world.block.pre.PrePlayerInteractBlockEvent;
 import sh.miles.voidcr.plugin.lifecycle.event.world.inventory.container.pre.PrePlayerItemContainerInteractEvent;
 import sh.miles.voidcr.plugin.type.StandardPlugin;
@@ -15,8 +16,8 @@ public class TestStandardPlugin implements StandardPlugin {
 
     @Override
     public void initialize(final Server server) {
-        server.getLifecycle().observe(this, PrePlayerItemContainerInteractEvent.class, (event, id) -> {
-            System.out.println(event.getInteraction());
+        server.getLifecycle().observe(this, PreEntityUseJetpackEvent.class, (event, id) -> {
+            System.out.println(event.isUsingJetpack());
         });
         server.getLogger().info("Hello, World! From Test Plugin!");
     }

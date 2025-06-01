@@ -11,5 +11,5 @@
 +   }
 +   // VoidCR add fetcher
     public static final String BLOCK_ENTITY_ID = "base:sign_entity";
-    public boolean runTexture = true;
+    public boolean textureDirty = true;
     private String[] texts = new String[]{"", "", "", "", ""};

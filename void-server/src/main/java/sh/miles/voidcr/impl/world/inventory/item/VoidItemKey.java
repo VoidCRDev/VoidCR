@@ -11,8 +11,8 @@ import java.util.Objects;
 
 public final class VoidItemKey implements ItemKey {
 
-    private static final String REGEX_PERMISSIBLE = "[a-zA-Z_-\\[\\]\\,\\=]";
-    private static final String REGEX = "[a-zA-Z_-]";
+    private static final String REGEX_PERMISSIBLE = "[0-9a-zA-Z_-\\[\\]\\,\\=#]";
+    private static final String REGEX = "[a-zA-Z_-#]";
 
     private final String namespace;
     private final String key;
@@ -98,7 +98,7 @@ public final class VoidItemKey implements ItemKey {
     private static boolean isValidChar(char c, boolean permissible) {
         boolean result = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '.' || c == '_' || c == '-';
         if (permissible) {
-            result = result || c == '[' || c == ']' || c == ',' || c == '=';
+            result = result || c == '[' || c == ']' || c == ',' || c == '=' || c == '#';
         }
         return result;
     }

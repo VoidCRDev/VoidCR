@@ -6,6 +6,7 @@ import finalforeach.cosmicreach.accounts.Account;
 import finalforeach.cosmicreach.blockentities.BlockEntitySign;
 import finalforeach.cosmicreach.blocks.BlockPosition;
 import finalforeach.cosmicreach.blocks.BlockState;
+import finalforeach.cosmicreach.entities.Entity;
 import finalforeach.cosmicreach.entities.IDamageSource;
 import finalforeach.cosmicreach.entities.player.Player;
 import finalforeach.cosmicreach.items.ItemSlot;
@@ -17,7 +18,9 @@ import finalforeach.cosmicreach.world.World;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.post.VoidPostPlayerChatEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.pre.VoidPrePlayerChatEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityDamageEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityUseJetpackEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityDamageEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityUseJetpackEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.post.VoidPostAccountJoinEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.pre.VoidPreAccountJoinEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.post.VoidPostPlayerOpenBlockScreenEvent;
@@ -126,5 +129,13 @@ public final class VoidEventFactory {
     public static void postPlayerItemContainerInteract(Player player, ItemSlot slot, SlotInteractionType interactionType) {
         final ItemStack item = slot.getItemStack() == null ? VoidItemStack.EMPTY.get() : slot.getItemStack();
         dispatchEvent(ctx -> new VoidPostPlayerInteractContainerEvent(ctx, slot.getContainer(), slot.getSlotId(), player, interactionType, item));
+    }
+
+    public static VoidPreEntityUseJetpackEvent preEntityUseJetpack(Entity entity, boolean isUsingJetpack) {
+        return dispatchEvent(ctx -> new VoidPreEntityUseJetpackEvent(ctx, entity, isUsingJetpack));
+    }
+
+    public static void postEntityUseJetpack(Entity entity, boolean isUsingJetpack) {
+        dispatchEvent(ctx -> new VoidPostEntityUseJetpackEvent(ctx, entity,isUsingJetpack));
     }
 }

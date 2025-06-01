@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/blockentities/BlockEntity.java
 +++ b/finalforeach/cosmicreach/blockentities/BlockEntity.java
-@@ -14,6 +_,10 @@
+@@ -15,6 +_,10 @@
  import java.util.HashMap;
  
  public abstract class BlockEntity implements IBlockEntity, ICRBinSerializable, ISlotContainerParent {
