@@ -3,6 +3,7 @@
 vineflower-version = "1.12.0-SNAPSHOT"
 diffpatch-version = "2.0.0.36"
 asm-version = "9.7.1"
+jbsdiff-version = "1.0"
 # End buildSrc
 # Cosmic Reach
 libgdx-version = "1.12.1"
@@ -26,6 +27,7 @@ artistan = { module = "sh.miles.artisan:artisan-extensions", version.ref = "arti
 vineflower = { module = "org.vineflower:vineflower", version.ref = "vineflower-version" }
 diffpath = { module = "io.codechicken:DiffPatch", version.ref = "diffpatch-version" }
 asm = { module = "org.ow2.asm:asm", version.ref = "asm-version" }
+jbsdiff = { module = "io.sigpipe:jbsdiff", version.ref = "jbsdiff-version" }
 # End buildSrc
 # Cosmic Reach
 libgdx-api = { module = "com.badlogicgames.gdx:gdx", version.ref = "libgdx-version" }

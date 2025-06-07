@@ -11,6 +11,7 @@ repositories {
 dependencies {
     implementation(libs.vineflower)
     implementation(libs.diffpath)
+    implementation(libs.jbsdiff)
     implementation(libs.asm)
     implementation(libs.artistan) {
         isChanging = true

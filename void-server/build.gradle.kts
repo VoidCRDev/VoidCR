@@ -5,6 +5,8 @@ import sh.miles.voidcr.task.DecompileTask
 import sh.miles.voidcr.task.FilterAndTransformZipTask
 import sh.miles.voidcr.task.SetupSourcesTask
 import sh.miles.voidcr.task.DownloadCosmicReachServer
+import sh.miles.voidcr.task.build.BinaryPatchTask
+import sh.miles.voidcr.task.build.CreateBuildDataTask
 
 plugins {
     java
@@ -51,7 +53,12 @@ dependencies {
     implementation(project(":void-api"))
 }
 
+tasks.jar {
+    enabled = false
+}
+
 tasks.shadowJar {
+    archiveFileName = "VoidCR-${crVersion}.jar"
     manifest {
         attributes(
             "Implementation-Title" to "VoidCR",
@@ -63,10 +70,6 @@ tasks.shadowJar {
     from(project.layout.buildDirectory.file("generated/cosmic-reach-assets"))
 
     dependsOn(generateResources)
-}
-
-tasks.build {
-    dependsOn(tasks.shadowJar)
 }
 
 val assetsFolder = rootProject.file("assets")
@@ -159,6 +162,28 @@ val downloadCosmicReachServer by tasks.registering(DownloadCosmicReachServer::cl
     this.outputJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion.jar")
 }
 
+val createBinaryPatch by tasks.registering(BinaryPatchTask::class) {
+    group = "voidcr-build"
+
+    cosmicReachJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion.jar")
+    patchFile = assetsFolder.resolve("build/crpatch.patch")
+    voidCRJar = tasks.shadowJar.get().archiveFile
+
+    dependsOn(tasks.shadowJar)
+}
+
+val createBuildData by tasks.registering(CreateBuildDataTask::class) {
+    group = "voidcr-build"
+
+    val dataSet = downloadCosmicReachServer.get();
+    archiveRepoUrl = dataSet.archiveRepoUrl
+    phase = dataSet.phase
+    version = dataSet.version
+    mainClass = "sh.miles.voidcr.Main"
+
+    outputFile = assetsFolder.resolve("build/build.txt")
+}
+
 tasks.register("setup") {
     group = "voidcr-setup"
 
@@ -172,4 +197,10 @@ tasks.register("update") {
 
     setupSources.get().mustRunAfter(applyPatchesFuzzy)
     dependsOn(filterJar, decompileJar, applyPatchesFuzzy, setupSources)
+}
+
+tasks.build {
+    dependsOn(tasks.shadowJar)
+    dependsOn(createBinaryPatch)
+    dependsOn(createBuildData)
 }

@@ -5,7 +5,10 @@ gradle.rootProject {
     group = "sh.miles.voidcr"
 }
 
-include("void-server")
-include("void-api")
-include("void-apigen")
-include("void-test-plugin")
+include(
+    "void-api",
+    "void-apigen",
+    "void-dist",
+    "void-server",
+    "void-test-plugin"
+)
