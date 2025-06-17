@@ -32,3 +32,9 @@ dependencies {
     api(platform(libs.log4j.bom))
     api(libs.log4j.api)
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(properties["java-language"].toString())
+    }
+}

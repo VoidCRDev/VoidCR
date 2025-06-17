@@ -8,4 +8,4 @@
 +         if (GameSingletons.getNumberOfPlayers() == 0 && finalforeach.cosmicreach.networking.server.ServerSingletons.running.get() && !GameSingletons.isClient || this.zoneLoaders.isEmpty()) {
              synchronized (worldGenThread) {
                 if (GameSingletons.getNumberOfPlayers() == 0 || this.zoneLoaders.isEmpty()) {
-                   Entries var10 = this.zoneLoaders.entries().iterator();
+                   Iterator i$x = this.zoneLoaders.entries().iterator();

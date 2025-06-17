@@ -155,6 +155,11 @@ public interface BlockTypes {
     BlockType MAGMA = get("magma");
 
     /**
+     * Generated {@link BlockType} with the id "base:maize"
+     */
+    BlockType MAIZE = get("maize");
+
+    /**
      * Generated {@link BlockType} with the id "base:metal_panel"
      */
     BlockType METAL_PANEL = get("metal_panel");
@@ -180,6 +185,11 @@ public interface BlockTypes {
     BlockType ORE_RUBY = get("ore_ruby");
 
     /**
+     * Generated {@link BlockType} with the id "base:ore_sapphire"
+     */
+    BlockType ORE_SAPPHIRE = get("ore_sapphire");
+
+    /**
      * Generated {@link BlockType} with the id "base:piston"
      */
     BlockType PISTON = get("piston");
@@ -203,6 +213,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:sapling_poplar"
      */
     BlockType SAPLING_POPLAR = get("sapling_poplar");
+
+    /**
+     * Generated {@link BlockType} with the id "base:sapphire_block"
+     */
+    BlockType SAPPHIRE_BLOCK = get("sapphire_block");
 
     /**
      * Generated {@link BlockType} with the id "base:snow"

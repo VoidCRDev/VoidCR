@@ -11,6 +11,12 @@ dependencies {
     implementation(libs.jbsdiff)
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(properties["java-language"].toString())
+    }
+}
+
 tasks.jar {
     enabled = false
 }

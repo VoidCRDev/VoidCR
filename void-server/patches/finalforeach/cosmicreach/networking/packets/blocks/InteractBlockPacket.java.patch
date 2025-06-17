@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/packets/blocks/InteractBlockPacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/blocks/InteractBlockPacket.java
-@@ -58,6 +_,7 @@
+@@ -75,6 +_,7 @@
  
     @Override
     public void handle(NetworkIdentity identity, ChannelHandlerContext ctx) {
@@ -8,7 +8,7 @@
        if (!identity.isClient()) {
           Zone zone = identity.getZone();
           Player player = identity.getPlayer();
-@@ -75,6 +_,11 @@
+@@ -92,6 +_,11 @@
              if (this.iteractTarget != InteractBlockPacket.IteractTarget.IGNORE_BLOCK_ENTITY) {
                 BlockEntity blockEntity = this.blockPos.getBlockEntity();
                 if (blockEntity != null) {
@@ -20,7 +20,7 @@
                    blockEntity.onInteract(player, zone);
                 }
              }
-@@ -88,6 +_,12 @@
+@@ -106,6 +_,12 @@
                 identity.send(new ContainerSyncPacket(0, player.inventory));
              }
           } else {
@@ -33,7 +33,7 @@
              BlockEventTrigger[] triggers = this.blockState != null ? this.blockState.getTrigger("onInteract") : null;
              if (triggers != null) {
                 BlockEventArgs args = new BlockEventArgs();
-@@ -99,6 +_,7 @@
+@@ -117,6 +_,7 @@
                 args.runScheduledTriggers();
              }
           }

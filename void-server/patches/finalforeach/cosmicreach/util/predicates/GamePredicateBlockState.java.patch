@@ -1,0 +1,11 @@
+--- a/finalforeach/cosmicreach/util/predicates/GamePredicateBlockState.java
++++ b/finalforeach/cosmicreach/util/predicates/GamePredicateBlockState.java
+@@ -80,7 +_,7 @@
+                         && Objects.equals(blockState.getBlockId(), ref.getBlockId());
+                   };
+                } else {
+-                  this.subPredicate = blockState -> blockState != null && Objects.equals(blockState.getBlockId(), id);
++                  this.subPredicate = blockState -> blockState != null && Objects.equals(blockState.getBlockId(), idx);
+                }
+                break;
+             case "has_block_state_id":

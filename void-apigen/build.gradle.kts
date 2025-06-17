@@ -22,6 +22,12 @@ dependencies {
     implementation(project(":void-api"))
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(properties["java-language"].toString())
+    }
+}
+
 tasks.jar {
     enabled = false
 }

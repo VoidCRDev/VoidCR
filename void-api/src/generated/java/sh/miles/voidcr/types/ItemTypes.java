@@ -25,6 +25,16 @@ public interface ItemTypes {
     ItemType AXE_STONE = get("axe_stone");
 
     /**
+     * Generated {@link ItemType} with the id "base:corn"
+     */
+    ItemType CORN = get("corn");
+
+    /**
+     * Generated {@link ItemType} with the id "base:corn_kernels"
+     */
+    ItemType CORN_KERNELS = get("corn_kernels");
+
+    /**
      * Generated {@link ItemType} with the id "base:flamethrower"
      */
     ItemType FLAMETHROWER = get("flamethrower");
@@ -98,6 +108,11 @@ public interface ItemTypes {
      * Generated {@link ItemType} with the id "base:ruby"
      */
     ItemType RUBY = get("ruby");
+
+    /**
+     * Generated {@link ItemType} with the id "base:sapphire"
+     */
+    ItemType SAPPHIRE = get("sapphire");
 
     /**
      * Generated {@link ItemType} with the id "base:shovel_aluminium"
