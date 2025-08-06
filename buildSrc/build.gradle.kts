@@ -13,6 +13,7 @@ dependencies {
     implementation(libs.diffpath)
     implementation(libs.jbsdiff)
     implementation(libs.asm)
+    implementation(libs.gson)
     implementation(libs.artistan) {
         isChanging = true
     }

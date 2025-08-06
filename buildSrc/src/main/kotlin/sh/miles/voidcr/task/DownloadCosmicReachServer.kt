@@ -1,36 +1,37 @@
 package sh.miles.voidcr.task
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.GradleException
 import org.gradle.api.file.RegularFileProperty
-import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
-import java.net.URI
+import sh.miles.voidcr.VersionBundle
 
 abstract class DownloadCosmicReachServer : DefaultTask() {
 
+    @Optional // not optional at all but makes gradle happy
     @get:Input
-    abstract val archiveRepoUrl: Property<String>
-
-    @get:Input
-    abstract val phase: Property<String>
-
-    @get:Input
-    abstract val version: Property<String>
+    var versionBundle: VersionBundle? = null
 
     @get:OutputFile
     abstract val outputJar: RegularFileProperty
 
     @TaskAction
     fun execute() {
-        val jarUrl = "${archiveRepoUrl.get()}${phase.get()}/${version.get()}/server/Cosmic-Reach-Server-${version.get()}.jar"
+        if (versionBundle == null) {
+            GradleException("No VersionBundle found for download cosmic reach server task")
+            return
+        }
+
+        logger.lifecycle("targeting $versionBundle")
+
         val file = outputJar.get().asFile
 
         if (!file.exists()) {
-            val url = URI(jarUrl).toURL()
             file.parentFile.mkdirs()
-            url.openStream().use { input ->
+            versionBundle!!.url.openStream().use { input ->
                 file.outputStream().use { output ->
                     input.copyTo(output)
                 }

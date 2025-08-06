@@ -1,10 +1,12 @@
+import sh.miles.voidcr.VersionBundle
 import sh.miles.voidcr.task.ApplyPatchesFuzzyTask
 import sh.miles.voidcr.task.ApplyPatchesTask
 import sh.miles.voidcr.task.BuildPatchesTask
 import sh.miles.voidcr.task.DecompileTask
-import sh.miles.voidcr.task.FilterAndTransformZipTask
-import sh.miles.voidcr.task.SetupSourcesTask
 import sh.miles.voidcr.task.DownloadCosmicReachServer
+import sh.miles.voidcr.task.FilterAndTransformZipTask
+import sh.miles.voidcr.task.GenerateCosmicReachVersionBundle
+import sh.miles.voidcr.task.SetupSourcesTask
 import sh.miles.voidcr.task.build.BinaryPatchTask
 import sh.miles.voidcr.task.build.CreateBuildDataTask
 
@@ -159,13 +161,22 @@ val generateResources by tasks.registering(Copy::class) {
     into(project.layout.buildDirectory.file("generated/cosmic-reach-assets"))
 }
 
+val generateVersionBundle by tasks.registering(GenerateCosmicReachVersionBundle::class) {
+    this.archiveRepoUrl = "https://raw.githubusercontent.com/PuzzlesHQ/CRArchive/refs/heads/main/"
+    this.phase = crPhase
+    this.version = crVersion
+}
+
 val downloadCosmicReachServer by tasks.registering(DownloadCosmicReachServer::class) {
     group = "voidcr-setup"
 
-    this.archiveRepoUrl = "https://raw.githubusercontent.com/CRModders/CosmicArchive/main/versions/"
-    this.phase = crPhase
-    this.version = crVersion
     this.outputJar = assetsFolder.resolve("Cosmic-Reach-Server-$crVersion.jar")
+
+    doFirst {
+        versionBundle = project.extra["versionBundle"] as VersionBundle
+    }
+
+    dependsOn(generateVersionBundle)
 }
 
 val createBinaryPatch by tasks.registering(BinaryPatchTask::class) {
@@ -181,13 +192,17 @@ val createBinaryPatch by tasks.registering(BinaryPatchTask::class) {
 val createBuildData by tasks.registering(CreateBuildDataTask::class) {
     group = "voidcr-build"
 
-    val dataSet = downloadCosmicReachServer.get();
-    archiveRepoUrl = dataSet.archiveRepoUrl
-    phase = dataSet.phase
+    val dataSet = generateVersionBundle.get();
     version = dataSet.version
     mainClass = "sh.miles.voidcr.Main"
 
     outputFile = assetsFolder.resolve("build/build.txt")
+
+    doFirst {
+        downloadUrl = (project.extra["versionBundle"] as VersionBundle).url.toString()
+    }
+
+    dependsOn(generateVersionBundle)
 }
 
 tasks.register("setup") {
