@@ -116,4 +116,9 @@ public class VoidEntity implements Entity, Mirrored<finalforeach.cosmicreach.ent
     public int hashCode() {
         return Objects.hashCode(mirror);
     }
+
+    @Override
+    public boolean isEnvironment() {
+        return false;
+    }
 }
