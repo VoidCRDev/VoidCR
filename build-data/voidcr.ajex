@@ -6,6 +6,9 @@ public finalforeach/cosmicreach/chat/commands/Command REGISTERED_ALIAS_COMMANDS
 public finalforeach/cosmicreach/chat/commands/Command REGISTERED_COMMAND_ALIAS_LIST
 public finalforeach/cosmicreach/chat/commands/Command args
 
+public finalforeach/cosmicreach/blockentities/BlockEntityDispenser shootDispenser()V
+public finalforeach/cosmicreach/blockentities/BlockEntityDispenser shootDispenserNow()V
+public finalforeach/cosmicreach/blockentities/BlockEntityDispenser shootPending
 public finalforeach/cosmicreach/blockentities/BlockEntityElectricFurnace progressTicks
 public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator powerAmountJoules
 public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator maxFuelTicks

@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/mobs/MobDroneTrap.java
 +++ b/finalforeach/cosmicreach/entities/mobs/MobDroneTrap.java
-@@ -104,8 +_,8 @@
+@@ -106,8 +_,8 @@
     @Override
     public void onUseInteraction(Player player, ItemStack heldItemStack) {
        super.onUseInteraction(player, heldItemStack);

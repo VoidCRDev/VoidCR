@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter.java
 +++ b/finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter.java
-@@ -14,6 +_,12 @@
+@@ -15,6 +_,12 @@
  import finalforeach.cosmicreach.world.Zone;
  
  public class BlockEntityLaserEmitter extends BlockEntity implements IBlockEntity {
