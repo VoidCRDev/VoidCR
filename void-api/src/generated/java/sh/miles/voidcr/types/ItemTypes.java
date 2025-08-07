@@ -35,6 +35,11 @@ public interface ItemTypes {
     ItemType CORN_KERNELS = get("corn_kernels");
 
     /**
+     * Generated {@link ItemType} with the id "base:debug_wrench"
+     */
+    ItemType DEBUG_WRENCH = get("debug_wrench");
+
+    /**
      * Generated {@link ItemType} with the id "base:flamethrower"
      */
     ItemType FLAMETHROWER = get("flamethrower");
@@ -73,6 +78,11 @@ public interface ItemTypes {
      * Generated {@link ItemType} with the id "base:latex"
      */
     ItemType LATEX = get("latex");
+
+    /**
+     * Generated {@link ItemType} with the id "base:manure"
+     */
+    ItemType MANURE = get("manure");
 
     /**
      * Generated {@link ItemType} with the id "base:medkit"
@@ -128,6 +138,11 @@ public interface ItemTypes {
      * Generated {@link ItemType} with the id "base:shovel_stone"
      */
     ItemType SHOVEL_STONE = get("shovel_stone");
+
+    /**
+     * Generated {@link ItemType} with the id "base:steak"
+     */
+    ItemType STEAK = get("steak");
 
     /**
      * Generated {@link ItemType} with the id "base:stick"

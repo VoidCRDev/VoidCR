@@ -75,6 +75,11 @@ public interface BlockTypes {
     BlockType DIRT = get("dirt");
 
     /**
+     * Generated {@link BlockType} with the id "base:dispenser"
+     */
+    BlockType DISPENSER = get("dispenser");
+
+    /**
      * Generated {@link BlockType} with the id "base:electric_furnace"
      */
     BlockType ELECTRIC_FURNACE = get("electric_furnace");
@@ -123,6 +128,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:laser_switch"
      */
     BlockType LASER_SWITCH = get("laser_switch");
+
+    /**
+     * Generated {@link BlockType} with the id "base:lava"
+     */
+    BlockType LAVA = get("lava");
 
     /**
      * Generated {@link BlockType} with the id "base:leaves"
