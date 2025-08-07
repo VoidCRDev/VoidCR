@@ -14,4 +14,9 @@ public class VoidDamageSource implements DamageSource {
             default -> ENVIRONMENT;
         };
     }
+
+    @Override
+    public boolean isEnvironment() {
+        return this == ENVIRONMENT;
+    }
 }

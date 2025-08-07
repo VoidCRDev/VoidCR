@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/Entity.java
 +++ b/finalforeach/cosmicreach/entities/Entity.java
-@@ -46,6 +_,10 @@
+@@ -49,6 +_,10 @@
     private static final BlockPosition tmpBlockPos1 = new BlockPosition(null, 0, 0, 0);
     private static final BlockPosition tmpBlockPos2 = new BlockPosition(null, 0, 0, 0);
     private static EntityPositionPacket positionPacket = new EntityPositionPacket();
@@ -11,7 +11,7 @@
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
     @CRBSerialized
-@@ -168,11 +_,16 @@
+@@ -174,11 +_,16 @@
     }
  
     public boolean recentlyHit() {
@@ -29,7 +29,7 @@
           if (ServerSingletons.SERVER != null) {
              ServerSingletons.SERVER.broadcast(this.zone, new HitEntityPacket(this, amount));
           }
-@@ -180,9 +_,13 @@
+@@ -186,9 +_,13 @@
           if (amount < 0.0F) {
              this.hitpoints = Math.min(this.hitpoints - amount, this.maxHitpoints);
           } else if (this.getPendingDamage() == 0.0F && !this.recentlyHit()) {

@@ -12,4 +12,13 @@ import sh.miles.voidcr.entity.Entity;
  * @since 0.4.4
  */
 public interface DamageSource {
+
+    /**
+     * Checks whether or not this DamageSource is the result of an environmental damage e.g. fall damage lava etc.
+     * <p>
+     * This method can be used as an alternative to {@code damageSource instanceOf Entity}.
+     *
+     * @return true if the damage source is environmental, otherwise false.
+     */
+    boolean isEnvironment();
 }

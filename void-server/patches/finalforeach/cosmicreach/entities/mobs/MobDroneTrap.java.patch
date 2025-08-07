@@ -1,0 +1,13 @@
+--- a/finalforeach/cosmicreach/entities/mobs/MobDroneTrap.java
++++ b/finalforeach/cosmicreach/entities/mobs/MobDroneTrap.java
+@@ -104,8 +_,8 @@
+    @Override
+    public void onUseInteraction(Player player, ItemStack heldItemStack) {
+       super.onUseInteraction(player, heldItemStack);
+-      if (this.friendly) {
+-         this.activateTrap();
++      if (this.friendly || sh.miles.voidcr.impl.server.VoidServer.SERVER.getConfiguration().behaviorChanges().activateDroneTrapOnRightClick(player, heldItemStack)) { // VoidCR - allow release of drone trap in creative
++          this.activateTrap();
+       }
+    }
+ 

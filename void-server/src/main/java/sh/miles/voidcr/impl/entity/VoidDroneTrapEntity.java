@@ -1,10 +1,11 @@
 package sh.miles.voidcr.impl.entity;
 
+import finalforeach.cosmicreach.entities.mobs.MobDroneTrap;
 import sh.miles.voidcr.entity.DroneTrapEntity;
 
 public class VoidDroneTrapEntity extends VoidEntity implements DroneTrapEntity {
 
-    public VoidDroneTrapEntity(final finalforeach.cosmicreach.entities.DroneTrapEntity mirror) {
+    public VoidDroneTrapEntity(final MobDroneTrap mirror) {
         super(mirror);
     }
 
@@ -14,7 +15,7 @@ public class VoidDroneTrapEntity extends VoidEntity implements DroneTrapEntity {
     }
 
     @Override
-    public finalforeach.cosmicreach.entities.DroneTrapEntity getMirror() {
-        return (finalforeach.cosmicreach.entities.DroneTrapEntity) super.mirror;
+    public MobDroneTrap getMirror() {
+        return (MobDroneTrap) super.mirror;
     }
 }

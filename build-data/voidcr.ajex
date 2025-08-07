@@ -34,7 +34,7 @@ public finalforeach/cosmicreach/world/Chunk blockEntities
 
 ~APIGEN
 
-sh/miles/voidcr/impl/entity/VoidDroneTrapEntity finalforeach/cosmicreach/entities/DroneTrapEntity
+sh/miles/voidcr/impl/entity/VoidDroneTrapEntity finalforeach/cosmicreach/entities/mobs/MobDroneTrap
 sh/miles/voidcr/impl/entity/VoidEntity finalforeach/cosmicreach/entities/Entity
 sh/miles/voidcr/impl/entity/VoidFlameProjectileEntity finalforeach/cosmicreach/entities/EntityFlameProjectile
 sh/miles/voidcr/impl/entity/VoidLaserProjectileEntity finalforeach/cosmicreach/entities/EntityLaserProjectile
