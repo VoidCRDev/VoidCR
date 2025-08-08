@@ -9,6 +9,7 @@ import sh.miles.voidcr.world.block.BlockType;
 import sh.miles.voidcr.world.inventory.container.ItemContainerInteraction;
 import sh.miles.voidcr.world.inventory.item.ItemProperty;
 import sh.miles.voidcr.world.inventory.item.ItemType;
+import sh.miles.voidcr.world.particle.ParticleType;
 
 /**
  * Access for registries
@@ -30,6 +31,17 @@ public interface Registries {
      * @since 0.3.22
      */
     NamedRegistry<ItemType> ITEM = namedRegistry(ItemType.class);
+
+    /**
+     * The Particle Type Registry, does not support registration
+     * <p>
+     * Internally represented as a list of fields so after updates particle types may be missing this is always an
+     * issue. All keys for this registry are under {@link NamedKey#COSMIC_REACH} due to them being internally modeled,
+     * but no in this form.
+     *
+     * @since 0.4.15
+     */
+    NamedRegistry<ParticleType> PARTICLE = namedRegistry(ParticleType.class);
 
     /**
      * The ItemContainerInteraction registry, does not support registration

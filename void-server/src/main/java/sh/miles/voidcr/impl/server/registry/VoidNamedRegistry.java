@@ -21,7 +21,7 @@ public final class VoidNamedRegistry<E extends Keyed> extends VoidRegistry<E, Na
         return registry;
     }
 
-    public static <E extends Keyed, I> VoidNamedRegistry<E> fromVoidCRArraySource(I[] provision, Function<I, E> map) {
+    public static <E extends Keyed, I> VoidNamedRegistry<E> fromArraySource(I[] provision, Function<I, E> map) {
         final VoidNamedRegistry<E> registry = new VoidNamedRegistry<>();
         for (final I entry : provision) {
             registry.register(map.apply(entry));

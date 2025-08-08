@@ -12,6 +12,7 @@ import sh.miles.voidcr.world.Chunk;
 import sh.miles.voidcr.world.World;
 import sh.miles.voidcr.world.position.BlockPos;
 import sh.miles.voidcr.world.position.LocalBlockPos;
+import sh.miles.voidcr.world.position.Position;
 
 public class VoidBlockPos extends VoidIntPosition<BlockPos> implements BlockPos {
 
@@ -39,6 +40,11 @@ public class VoidBlockPos extends VoidIntPosition<BlockPos> implements BlockPos 
     @Override
     protected Object[] others() {
         return new Object[0];
+    }
+
+    @Override
+    public Position relax() {
+        return new VoidPosition(x, y, z);
     }
 
     @Override

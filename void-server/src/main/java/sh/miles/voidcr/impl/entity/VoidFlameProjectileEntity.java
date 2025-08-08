@@ -1,6 +1,5 @@
 package sh.miles.voidcr.impl.entity;
 
-import finalforeach.cosmicreach.entities.Entity;
 import finalforeach.cosmicreach.entities.EntityFlameProjectile;
 import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.EntityIdentifier;

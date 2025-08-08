@@ -13,6 +13,17 @@ import sh.miles.voidcr.world.World;
 public interface BlockPos extends IntPosition<BlockPos>, ByteSerializable {
 
     /**
+     * Converts this block position to a floating-point {@link Position}.
+     * <p>
+     * The returned position represents the same location as this block position, but allows sub-block precision through
+     * floating-point coordinates.
+     *
+     * @return a {@link Position} with the same coordinates as this block position, stored as floats
+     * @since 0.4.15
+     */
+    Position relax();
+
+    /**
      * Truncates the BlockPos into its relative chunk position, however unlike {@link #bindTo(Chunk, boolean)} no other
      * special methods are provided
      *
