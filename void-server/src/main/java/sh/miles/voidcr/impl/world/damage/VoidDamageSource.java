@@ -10,8 +10,7 @@ public class VoidDamageSource implements DamageSource {
     public static DamageSource toVoidSource(IDamageSource source) {
         return switch (source) {
             case Entity entity -> entity.getVoidMirror();
-            case null -> throw new IllegalArgumentException("Can not find null source in VoidDamageSource#toDamageSource");
-            default -> ENVIRONMENT;
+            case null, default -> ENVIRONMENT;
         };
     }
 
