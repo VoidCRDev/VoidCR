@@ -12,12 +12,10 @@ unless sweeping internal changes occur an expected 3 version compatibility guara
 
 ## How To Install
 
-Currently there are no public buildable jars for VoidCR and there won't be for the foreseeable future as this is a
-massive project.
+Currently there are no public buildable jars on github for VoidCR and there won't be for quite a while. However,
+you can either compile the project yourself or hop over the Cosmic Reach discord server and pickup the jar in the
+VoidCR mods thread.
 
 ## Contributions
 
-VoidCR contributions are welcome, however, please create an issue **ON GITHUB** regarding your idea before getting to
-work the last thing that anyone wants is to dump
-a ton of time into a pull request that will instantly be closed. Pull Requests will aptly be tested and reviewed before
-merger. You can see more in our [CONTRIBUTING.MD](.github/CONTRIBUTING.MD)
+VoidCR contributions are welcome!! You can see more in our [CONTRIBUTING.MD](.github/CONTRIBUTING.MD)
