@@ -5,7 +5,7 @@
 To start making changes you must have the following
 
 - git
-- a Java 21 **JDK**
+- a Java 24 **JDK**
 
 ## Setup
 
