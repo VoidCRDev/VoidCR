@@ -1,0 +1,10 @@
+--- a/finalforeach/cosmicreach/entities/components/GravityComponent.java
++++ b/finalforeach/cosmicreach/entities/components/GravityComponent.java
+@@ -16,7 +_,6 @@
+          if (hasBuoyancy && !entity.collidedX && !entity.collidedZ || entity.velocity.y > 0.0F) {
+             entity.accelerate(0.0F, -entity.velocity.y * 4.0F * entity.fluidImmersionRatio, 0.0F);
+          }
+-
+          float fluidGravModifier = this.getFluidGravityModifier(entity);
+          float gx = Entity.gravity.x * entity.gravityModifier * fluidGravModifier;
+          float gy = Entity.gravity.y * entity.gravityModifier * fluidGravModifier;

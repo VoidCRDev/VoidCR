@@ -1,5 +1,13 @@
 --- a/finalforeach/cosmicreach/entities/Entity.java
 +++ b/finalforeach/cosmicreach/entities/Entity.java
+@@ -22,6 +_,7 @@
+ import finalforeach.cosmicreach.entities.components.IUpdateEntityComponent;
+ import finalforeach.cosmicreach.entities.components.LavaDamageComponent;
+ import finalforeach.cosmicreach.entities.components.NoFallDamage;
++import finalforeach.cosmicreach.entities.player.Gamemode;
+ import finalforeach.cosmicreach.entities.player.Player;
+ import finalforeach.cosmicreach.items.ItemStack;
+ import finalforeach.cosmicreach.networking.packets.entities.EntityPositionPacket;
 @@ -49,6 +_,10 @@
     private static final BlockPosition tmpBlockPos1 = new BlockPosition(null, 0, 0, 0);
     private static final BlockPosition tmpBlockPos2 = new BlockPosition(null, 0, 0, 0);
@@ -11,7 +19,7 @@
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
     @CRBSerialized
-@@ -174,11 +_,16 @@
+@@ -174,11 +_,21 @@
     }
  
     public boolean recentlyHit() {
@@ -20,7 +28,13 @@
     }
  
     public void hit(IDamageSource damageSource, float amount) {
-       if (amount != 0.0F) {
+-      if (amount != 0.0F) {
++       // VoidCR - creative instant kill start
++       if (sh.miles.voidcr.impl.server.VoidServer.SERVER.getConfiguration().behaviorChanges().creativeInstantKill() && damageSource instanceof finalforeach.cosmicreach.entities.player.PlayerEntity entity && entity.getPlayer().gamemode == Gamemode.CREATIVE) {
++           amount = entity.maxHitpoints;
++       }
++       // VoidCR - creative instant kill end
++       if (amount != 0.0F) {
 +         // VoidCR start - call VoidPreEntityDamageEvent
 +         final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityDamage(amount, maxInvulnerabilityFrames, damageSource, this);
 +         if (event != null && event.isCanceled()) return;
@@ -41,5 +55,26 @@
           }
 +         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityDamage(this.pendingDamage, this.invulnerabilityFrames, damageSource, this); // VoidCR - PostEntityDamageEvent
        }
+    }
+ 
+@@ -470,6 +_,10 @@
+    }
+ 
+    public void updateConstraints(Zone zone, Vector3 targetPosition) {
++       // VoidCR - EntityMoveEvent
++       final var out = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preEntityMove(this, this.lastPosition, targetPosition, this.isOnGround);
++       if (out != null) this.targetPosition.set(sh.miles.voidcr.impl.world.position.VoidPosition.toVector3(out.getTo()));
++       // VoidCR - EntityMoveEvent end
+       float floorFriction = 0.0F;
+       this.tmpEntityBoundingBox.set(this.localBoundingBox);
+       this.tmpEntityBoundingBox.min.add(this.position);
+@@ -896,6 +_,9 @@
+       }
+ 
+       EntityUtils.updateEntityChunk(zone, this);
++      // VoidCR - PostEntityMoveEvent start
++       sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityMove(this);
++       // VoidCR - PostEntityMoveEvent end
+       this.sendPositionPacket();
     }
  

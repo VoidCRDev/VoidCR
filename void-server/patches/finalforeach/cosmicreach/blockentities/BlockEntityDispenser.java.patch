@@ -12,4 +12,4 @@
 +    // VoidCR add fetcher
     private static final String SHOOT_DISPENSER_SIGNAL = "shootDispenser";
     public static final String BLOCK_ENTITY_ID = "base:dispenser";
-    boolean shootPending = false;
+    public boolean shootPending = false;

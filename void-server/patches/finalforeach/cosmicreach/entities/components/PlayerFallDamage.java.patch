@@ -1,0 +1,9 @@
+--- a/finalforeach/cosmicreach/entities/components/PlayerFallDamage.java
++++ b/finalforeach/cosmicreach/entities/components/PlayerFallDamage.java
+@@ -1,5 +_,6 @@
+ package finalforeach.cosmicreach.entities.components;
+ 
++import finalforeach.cosmicreach.entities.CommonEntityTags;
+ import finalforeach.cosmicreach.entities.Entity;
+ import finalforeach.cosmicreach.entities.IDamageSource;
+ 

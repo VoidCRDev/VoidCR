@@ -1,6 +1,7 @@
 package sh.miles.voidcr.impl.plugin.lifecycle.event;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector3;
 import finalforeach.cosmicreach.BlockEntityScreenInfo;
 import finalforeach.cosmicreach.accounts.Account;
 import finalforeach.cosmicreach.blockentities.BlockEntitySign;
@@ -18,8 +19,10 @@ import finalforeach.cosmicreach.world.World;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.post.VoidPostPlayerChatEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.pre.VoidPrePlayerChatEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityDamageEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityMoveEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityUseJetpackEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityDamageEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityMoveEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityUseJetpackEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.post.VoidPostAccountJoinEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.pre.VoidPreAccountJoinEvent;
@@ -137,5 +140,13 @@ public final class VoidEventFactory {
 
     public static void postEntityUseJetpack(Entity entity, boolean isUsingJetpack) {
         dispatchEvent(ctx -> new VoidPostEntityUseJetpackEvent(ctx, entity,isUsingJetpack));
+    }
+
+    public static VoidPreEntityMoveEvent preEntityMove(Entity entity, Vector3 lastPosition, Vector3 nextPosition, boolean isOnGround) {
+        return dispatchEvent(ctx -> new VoidPreEntityMoveEvent(ctx, entity, lastPosition, nextPosition, isOnGround));
+    }
+
+    public static void postEntityMove(Entity entity) {
+        dispatchEvent(ctx -> new VoidPostEntityMoveEvent(ctx, entity, entity.lastPosition, entity.position, entity.isOnGround));
     }
 }
