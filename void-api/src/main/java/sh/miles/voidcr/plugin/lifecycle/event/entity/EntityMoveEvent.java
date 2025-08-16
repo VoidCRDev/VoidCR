@@ -5,6 +5,8 @@ import sh.miles.voidcr.world.position.Position;
 /**
  * Represents an event that occurs when an entity moves. This interface provides methods to get the starting and ending
  * positions of the move, as well as whether the entity is on the ground during the move.
+ * <p>
+ * Note players don't trigger {@link EntityMoveEvent}
  *
  * @since 0.4.15
  */

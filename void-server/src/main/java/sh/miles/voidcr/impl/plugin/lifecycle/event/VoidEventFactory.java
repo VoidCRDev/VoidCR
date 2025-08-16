@@ -12,8 +12,8 @@ import finalforeach.cosmicreach.entities.IDamageSource;
 import finalforeach.cosmicreach.entities.player.Player;
 import finalforeach.cosmicreach.items.ItemSlot;
 import finalforeach.cosmicreach.items.ItemStack;
-import finalforeach.cosmicreach.items.containers.SlotContainer;
 import finalforeach.cosmicreach.networking.NetworkIdentity;
+import finalforeach.cosmicreach.networking.packets.entities.PlayerPositionPacket;
 import finalforeach.cosmicreach.networking.packets.items.SlotInteractionType;
 import finalforeach.cosmicreach.world.World;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.post.VoidPostPlayerChatEvent;
@@ -21,9 +21,11 @@ import sh.miles.voidcr.impl.plugin.lifecycle.event.chat.pre.VoidPrePlayerChatEve
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityDamageEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityMoveEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostEntityUseJetpackEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.post.VoidPostPlayerMoveEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityDamageEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityMoveEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPreEntityUseJetpackEvent;
+import sh.miles.voidcr.impl.plugin.lifecycle.event.entity.pre.VoidPrePlayerMoveEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.post.VoidPostAccountJoinEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.server.network.pre.VoidPreAccountJoinEvent;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.post.VoidPostPlayerOpenBlockScreenEvent;
@@ -139,7 +141,7 @@ public final class VoidEventFactory {
     }
 
     public static void postEntityUseJetpack(Entity entity, boolean isUsingJetpack) {
-        dispatchEvent(ctx -> new VoidPostEntityUseJetpackEvent(ctx, entity,isUsingJetpack));
+        dispatchEvent(ctx -> new VoidPostEntityUseJetpackEvent(ctx, entity, isUsingJetpack));
     }
 
     public static VoidPreEntityMoveEvent preEntityMove(Entity entity, Vector3 lastPosition, Vector3 nextPosition, boolean isOnGround) {
@@ -148,5 +150,13 @@ public final class VoidEventFactory {
 
     public static void postEntityMove(Entity entity) {
         dispatchEvent(ctx -> new VoidPostEntityMoveEvent(ctx, entity, entity.lastPosition, entity.position, entity.isOnGround));
+    }
+
+    public static VoidPrePlayerMoveEvent prePlayerMove(final Entity entity, final Vector3 from, final Vector3 to, final Vector3 viewDirection, final Vector3 viewPositionOffset, int flags) {
+        return dispatchEvent(ctx -> new VoidPrePlayerMoveEvent(ctx, entity, from, to, viewDirection, viewPositionOffset, (flags & PlayerPositionPacket.PLAYER_FLAG_ON_GROUND) != 0, (flags & PlayerPositionPacket.PLAYER_FLAG_SNEAKING) != 0, (flags & PlayerPositionPacket.PLAYER_FLAG_SPRINTING) != 0, (flags & PlayerPositionPacket.PLAYER_FLAG_PRONE) != 0));
+    }
+
+    public static void postPlayerMove(final Entity entity, int flags) {
+        dispatchEvent(ctx -> new VoidPostPlayerMoveEvent(ctx, entity, entity.lastPosition, entity.position, entity.viewDirection, entity.viewPositionOffset, (flags & PlayerPositionPacket.PLAYER_FLAG_ON_GROUND) != 0, (flags & PlayerPositionPacket.PLAYER_FLAG_SNEAKING) != 0, (flags & PlayerPositionPacket.PLAYER_FLAG_SPRINTING) != 0, (flags & PlayerPositionPacket.PLAYER_FLAG_PRONE) != 0));
     }
 }

@@ -1,0 +1,30 @@
+--- a/finalforeach/cosmicreach/networking/packets/entities/PlayerPositionPacket.java
++++ b/finalforeach/cosmicreach/networking/packets/entities/PlayerPositionPacket.java
+@@ -89,7 +_,18 @@
+ 
+       if (player != null) {
+          Entity e = player.getEntity();
+-         e.lastPosition.set(e.position);
++         // VoidCR - start PrePlayerMoveEvent
++          final var event = sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerMove(e, e.position, this.position, this.viewDir, this.viewDirOff, this.playerFlags);
++          Vector3 lastPosition = e.position;
++          if (event != null && event.isModified) {
++              lastPosition = sh.miles.voidcr.impl.world.position.VoidPosition.toVector3(event.getFrom());
++              this.position = sh.miles.voidcr.impl.world.position.VoidPosition.toVector3(event.getTo());
++              this.viewDir = sh.miles.voidcr.impl.world.position.VoidVector.toVector3(event.getViewDirection());
++              this.viewDirOff = sh.miles.voidcr.impl.world.position.VoidVector.toVector3(event.getViewPositionOffset());
++              this.playerFlags = event.getFlags();
++          }
++         e.lastPosition.set(lastPosition); // VoidCR explicit modifiable last position
++          // VoidCR - end PrePlayerMoveEvent
+          e.position.set(this.position);
+          e.viewDirection.set(this.viewDir);
+          e.viewPositionOffset.set(this.viewDirOff);
+@@ -102,6 +_,7 @@
+          }
+ 
+          if (identity.isServer()) {
++            sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerMove(e, this.playerFlags); // VoidCR - PostPlayerMoveEvent
+             ServerSingletons.SERVER.broadcastToZoneExcept(player.getZone(), this, identity);
+          }
+       }
