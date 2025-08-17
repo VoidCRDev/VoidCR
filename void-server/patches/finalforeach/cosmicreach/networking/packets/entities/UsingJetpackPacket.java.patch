@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/packets/entities/UsingJetpackPacket.java
 +++ b/finalforeach/cosmicreach/networking/packets/entities/UsingJetpackPacket.java
-@@ -49,6 +_,10 @@
+@@ -53,6 +_,10 @@
        }
  
        if (player != null) {
@@ -10,8 +10,8 @@
 +         // VoidCR end - PreEntityUseJetpackEvent
           if (identity.isServer() && !player.equipment.hasHoverJetpack() && this.shouldJetpack) {
              player.getEntity().removeTag(CommonEntityTags.USING_JETPACK);
-             identity.send(new UsingJetpackPacket(false));
-@@ -63,6 +_,7 @@
+             UsingJetpackPacket jetpackPacket = new UsingJetpackPacket(false);
+@@ -69,6 +_,7 @@
                 ServerSingletons.SERVER.broadcastToZoneExcept(player.getZone(), this, identity);
              }
           }

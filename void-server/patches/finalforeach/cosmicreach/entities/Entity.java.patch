@@ -1,14 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/Entity.java
 +++ b/finalforeach/cosmicreach/entities/Entity.java
-@@ -22,6 +_,7 @@
- import finalforeach.cosmicreach.entities.components.IUpdateEntityComponent;
- import finalforeach.cosmicreach.entities.components.LavaDamageComponent;
- import finalforeach.cosmicreach.entities.components.NoFallDamage;
-+import finalforeach.cosmicreach.entities.player.Gamemode;
- import finalforeach.cosmicreach.entities.player.Player;
- import finalforeach.cosmicreach.items.ItemStack;
- import finalforeach.cosmicreach.networking.packets.entities.EntityPositionPacket;
-@@ -49,6 +_,10 @@
+@@ -52,6 +_,10 @@
     private static final BlockPosition tmpBlockPos1 = new BlockPosition(null, 0, 0, 0);
     private static final BlockPosition tmpBlockPos2 = new BlockPosition(null, 0, 0, 0);
     private static EntityPositionPacket positionPacket = new EntityPositionPacket();
@@ -19,7 +11,7 @@
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
     @CRBSerialized
-@@ -174,11 +_,21 @@
+@@ -177,11 +_,21 @@
     }
  
     public boolean recentlyHit() {
@@ -30,7 +22,7 @@
     public void hit(IDamageSource damageSource, float amount) {
 -      if (amount != 0.0F) {
 +       // VoidCR - creative instant kill start
-+       if (sh.miles.voidcr.impl.server.VoidServer.SERVER.getConfiguration().behaviorChanges().creativeInstantKill() && damageSource instanceof finalforeach.cosmicreach.entities.player.PlayerEntity entity && entity.getPlayer().gamemode == Gamemode.CREATIVE) {
++       if (sh.miles.voidcr.impl.server.VoidServer.SERVER.getConfiguration().behaviorChanges().creativeInstantKill() && damageSource instanceof finalforeach.cosmicreach.entities.player.PlayerEntity entity && entity.getPlayer().gamemode == finalforeach.cosmicreach.entities.player.Gamemode.CREATIVE) {
 +           amount = entity.maxHitpoints;
 +       }
 +       // VoidCR - creative instant kill end
@@ -43,7 +35,7 @@
           if (ServerSingletons.SERVER != null) {
              ServerSingletons.SERVER.broadcast(this.zone, new HitEntityPacket(this, amount));
           }
-@@ -186,9 +_,13 @@
+@@ -189,9 +_,13 @@
           if (amount < 0.0F) {
              this.hitpoints = Math.min(this.hitpoints - amount, this.maxHitpoints);
           } else if (this.getPendingDamage() == 0.0F && !this.recentlyHit()) {
@@ -57,7 +49,7 @@
        }
     }
  
-@@ -470,6 +_,10 @@
+@@ -509,6 +_,10 @@
     }
  
     public void updateConstraints(Zone zone, Vector3 targetPosition) {
@@ -68,13 +60,11 @@
        float floorFriction = 0.0F;
        this.tmpEntityBoundingBox.set(this.localBoundingBox);
        this.tmpEntityBoundingBox.min.add(this.position);
-@@ -896,6 +_,9 @@
+@@ -935,6 +_,7 @@
        }
  
        EntityUtils.updateEntityChunk(zone, this);
-+      // VoidCR - PostEntityMoveEvent start
-+       sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityMove(this);
-+       // VoidCR - PostEntityMoveEvent end
++      sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postEntityMove(this); // VoidCR - PostEntityMoveEvent
        this.sendPositionPacket();
     }
  

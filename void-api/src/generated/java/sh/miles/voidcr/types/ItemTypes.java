@@ -35,6 +35,11 @@ public interface ItemTypes {
     ItemType CORN_KERNELS = get("corn_kernels");
 
     /**
+     * Generated {@link ItemType} with the id "base:crowbar"
+     */
+    ItemType CROWBAR = get("crowbar");
+
+    /**
      * Generated {@link ItemType} with the id "base:debug_wrench"
      */
     ItemType DEBUG_WRENCH = get("debug_wrench");
@@ -93,6 +98,11 @@ public interface ItemTypes {
      * Generated {@link ItemType} with the id "base:medkit_gold"
      */
     ItemType MEDKIT_GOLD = get("medkit_gold");
+
+    /**
+     * Generated {@link ItemType} with the id "base:microchip"
+     */
+    ItemType MICROCHIP = get("microchip");
 
     /**
      * Generated {@link ItemType} with the id "base:pickaxe_aluminium"

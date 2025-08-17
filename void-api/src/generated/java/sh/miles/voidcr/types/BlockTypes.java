@@ -220,6 +220,11 @@ public interface BlockTypes {
     BlockType SAND = get("sand");
 
     /**
+     * Generated {@link BlockType} with the id "base:sandstone"
+     */
+    BlockType SANDSTONE = get("sandstone");
+
+    /**
      * Generated {@link BlockType} with the id "base:sapling_poplar"
      */
     BlockType SAPLING_POPLAR = get("sapling_poplar");

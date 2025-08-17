@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/items/containers/SlotContainer.java
 +++ b/finalforeach/cosmicreach/items/containers/SlotContainer.java
-@@ -24,6 +_,11 @@
+@@ -26,6 +_,11 @@
  import sh.miles.voidcr.impl.world.inventory.container.VoidItemContainer;
  
  public class SlotContainer implements Serializable, ISlotContainer, ICRBinSerializable {
@@ -12,7 +12,7 @@
     private IDynamicArray<ItemSlot> slots = DynamicArrays.<ItemSlot>getNew(ItemSlot.class);
     public ISlotContainerParent parent;
     public int numberOfSlots;
-@@ -183,6 +_,7 @@
+@@ -186,6 +_,7 @@
     }
  
     public void onItemSlotUpdate(ItemSlot itemSlot) {

@@ -35,6 +35,11 @@ public interface EntityTypes {
     EntityType FALLING_BLOCK = get("falling_block");
 
     /**
+     * Generated {@link EntityType} with the id "base:flame_projectile"
+     */
+    EntityType FLAME_PROJECTILE = get("flame_projectile");
+
+    /**
      * Generated {@link EntityType} with the id "base:entity_drone_interceptor"
      */
     EntityType ENTITY_DRONE_INTERCEPTOR = get("entity_drone_interceptor");
