@@ -3,12 +3,14 @@ package sh.miles.voidcr.world;
 import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.Entity;
 import sh.miles.voidcr.entity.EntityIdentifier;
+import sh.miles.voidcr.entity.EntityType;
 import sh.miles.voidcr.util.NamedKey;
 import sh.miles.voidcr.world.block.BlockState;
 import sh.miles.voidcr.world.position.BlockPos;
 import sh.miles.voidcr.world.position.Position;
 
 import java.util.Collection;
+import java.util.function.Consumer;
 
 /**
  * Represents a singular world within CosmicReach, which contains entities, chunks, blocks.
@@ -90,6 +92,21 @@ public interface World {
      * @since 0.3.14
      */
     void removeEntity(final Entity entity);
+
+    /**
+     * Summons an entity into this world at the given position
+     * <p>
+     * Note, while this method has generics you must ensure the given {@link EntityType} corresponds to the correct
+     * consumer type, otherwise this method will fail at runtime.
+     *
+     * @param entityType the entity type to spawn
+     * @param position   the position to spawn the entity type at
+     * @param prepare    spawn preparations
+     * @param <E>        the entity type. Type not ensured by {@link EntityType}
+     * @return the spawned entity if successfully summoned, otherwise null
+     * @since 0.4.15
+     */
+    <E extends Entity> E summonEntity(EntityType entityType, Position position, Consumer<E> prepare);
 
     /**
      * Gets all entities within this world

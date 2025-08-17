@@ -2,13 +2,16 @@ package sh.miles.voidcr.impl.world;
 
 import com.badlogic.gdx.utils.Array;
 import com.google.common.base.Preconditions;
+import finalforeach.cosmicreach.entities.EntityCreator;
 import finalforeach.cosmicreach.world.BlockSetter;
 import finalforeach.cosmicreach.world.Zone;
 import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.Entity;
 import sh.miles.voidcr.entity.EntityIdentifier;
+import sh.miles.voidcr.entity.EntityType;
 import sh.miles.voidcr.impl.entity.VoidEntity;
 import sh.miles.voidcr.impl.entity.VoidEntityIdentifier;
+import sh.miles.voidcr.impl.util.VoidNamedKey;
 import sh.miles.voidcr.impl.world.block.VoidBlockState;
 import sh.miles.voidcr.impl.world.position.VoidBlockPos;
 import sh.miles.voidcr.impl.world.position.VoidPosition;
@@ -24,6 +27,7 @@ import sh.miles.voidcr.world.position.Position;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
 
 public final class VoidWorld implements World, Mirrored<Zone> {
 
@@ -86,6 +90,22 @@ public final class VoidWorld implements World, Mirrored<Zone> {
     public void removeEntity(final Entity entity) {
         Preconditions.checkArgument(entity != null, "The provided entity must not be null");
         this.mirror.removeEntity(((VoidEntity) entity).getMirror());
+    }
+
+    @Override
+    public <E extends Entity> E summonEntity(final EntityType entityType, final Position position, final Consumer<E> prepare) {
+        final finalforeach.cosmicreach.entities.Entity entity = EntityCreator.get(((VoidNamedKey) entityType.key()).getCosmicReachId());
+        if (entity == null) {
+            return null;
+        }
+
+        final E mirror = (E) entity.getVoidMirror();
+        prepare.accept(mirror); // could cause class cast exception, because EntityType doesn't ensure prepare aligns with actual entity type
+
+        entity.setPosition(VoidPosition.toVector3(position));
+        getMirror().addEntity(entity);
+        // not recounting mobs here could overflow mob cap, but that's okay we just assume plugins are deliberate
+        return mirror;
     }
 
     @Override
