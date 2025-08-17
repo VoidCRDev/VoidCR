@@ -1,5 +1,6 @@
 package sh.miles.voidcr.server.registry;
 
+import sh.miles.voidcr.entity.EntityType;
 import sh.miles.voidcr.server.VoidCR;
 import sh.miles.voidcr.util.Keyed;
 import sh.miles.voidcr.util.NamedKey;
@@ -26,22 +27,21 @@ public interface Registries {
     NamedRegistry<BlockType> BLOCK = namedRegistry(BlockType.class);
 
     /**
+     * The Entity Type registry, does not support registration
+     * <p>
+     * Internally this is represented as a list of static initialized entities. The registry is used for sake of
+     * organization. And retrieval of non generated EntityTypes.
+     *
+     * @since 0.4.15
+     */
+    NamedRegistry<EntityType> ENTITY = namedRegistry(EntityType.class);
+
+    /**
      * The Item Type registry, does not support registration
      *
      * @since 0.3.22
      */
     NamedRegistry<ItemType> ITEM = namedRegistry(ItemType.class);
-
-    /**
-     * The Particle Type Registry, does not support registration
-     * <p>
-     * Internally represented as a list of fields so after updates particle types may be missing this is always an
-     * issue. All keys for this registry are under {@link NamedKey#COSMIC_REACH} due to them being internally modeled,
-     * but no in this form.
-     *
-     * @since 0.4.15
-     */
-    NamedRegistry<ParticleType> PARTICLE = namedRegistry(ParticleType.class);
 
     /**
      * The ItemContainerInteraction registry, does not support registration
@@ -66,6 +66,16 @@ public interface Registries {
      */
     NamedRegistry<ItemProperty> ITEM_PROPERTY = namedRegistry(ItemProperty.class);
 
+    /**
+     * The Particle Type Registry, does not support registration
+     * <p>
+     * Internally represented as a list of fields so after updates particle types may be missing this is always an
+     * issue. All keys for this registry are under {@link NamedKey#COSMIC_REACH} due to them being internally modeled,
+     * but no in this form.
+     *
+     * @since 0.4.15
+     */
+    NamedRegistry<ParticleType> PARTICLE = namedRegistry(ParticleType.class);
 
     private static <E extends Keyed> NamedRegistry<E> namedRegistry(Class<E> clazz) {
         return (NamedRegistry<E>) VoidCR.getMagic().getRegistry(clazz);

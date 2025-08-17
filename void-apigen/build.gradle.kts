@@ -10,6 +10,11 @@ val assetsFolder = rootProject.file("assets")
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io") {
+        content {
+            includeGroup("com.github.Hangman")
+        }
+    }
     maven("https://maven.miles.sh/snapshots")
 }
 
@@ -20,6 +25,7 @@ dependencies {
         isChanging = true
     }
     implementation(project(":void-api"))
+    implementation(project(":void-server"))
 }
 
 java {

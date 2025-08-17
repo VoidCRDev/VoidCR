@@ -1,11 +1,14 @@
 package sh.miles.voidcr.apigen;
 
+import finalforeach.cosmicreach.entities.EntityCreator;
 import org.jspecify.annotations.NullMarked;
 import sh.miles.crdatalib.CRDataLib;
 import sh.miles.crdatalib.data.blocks.DataBlock;
 import sh.miles.crdatalib.data.items.DataItem;
 import sh.miles.crdatalib.parsing.schema.AssetType;
 import sh.miles.voidcr.apigen.impl.InterfaceFieldGen;
+import sh.miles.voidcr.entity.EntityType;
+import sh.miles.voidcr.impl.util.VoidNamedKey;
 import sh.miles.voidcr.util.NamedKey;
 import sh.miles.voidcr.world.block.BlockType;
 import sh.miles.voidcr.world.inventory.item.ItemKey;
@@ -19,10 +22,12 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.StreamSupport;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -46,6 +51,13 @@ public final class VoidAPIGen {
                         .registryName("BLOCK")
                         .keyType(NamedKey.class)
                         .listCreator((d) -> d.blocks().stream().map(DataBlock::id).sorted().toList())
+        );
+        writers.add(
+                new InterfaceFieldGen<>(EntityType.class)
+                        .packagePath("sh.miles.voidcr.types")
+                        .registryName("ENTITY")
+                        .keyType(NamedKey.class)
+                        .listCreator((d) -> StreamSupport.stream(EntityCreator.entityCreators.keys().spliterator(), false).toList())
         );
     }
 

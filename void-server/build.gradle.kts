@@ -62,7 +62,7 @@ java {
 }
 
 tasks.jar {
-    enabled = false
+    enabled = true
 }
 
 tasks.shadowJar {

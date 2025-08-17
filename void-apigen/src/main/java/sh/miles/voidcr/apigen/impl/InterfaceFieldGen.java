@@ -8,8 +8,6 @@ import sh.miles.crdatalib.CRDataLibUtils;
 import sh.miles.crdatalib.data.CRData;
 import sh.miles.voidcr.apigen.APIGenerator;
 import sh.miles.voidcr.server.registry.Registries;
-import sh.miles.voidcr.world.inventory.item.ItemKey;
-import sh.miles.voidcr.world.inventory.item.ItemType;
 
 import javax.lang.model.element.Modifier;
 import java.io.IOException;
