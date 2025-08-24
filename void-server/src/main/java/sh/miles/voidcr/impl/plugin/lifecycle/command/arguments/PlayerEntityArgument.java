@@ -1,6 +1,6 @@
 package sh.miles.voidcr.impl.plugin.lifecycle.command.arguments;
 
-import finalforeach.cosmicreach.GameSingletons;
+import finalforeach.cosmicreach.singletons.GameSingletons;
 import org.jspecify.annotations.NullMarked;
 import sh.miles.voidcr.entity.PlayerEntity;
 import sh.miles.voidcr.impl.entity.VoidPlayerEntity;

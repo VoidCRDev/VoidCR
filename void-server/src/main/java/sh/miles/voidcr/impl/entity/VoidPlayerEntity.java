@@ -1,8 +1,6 @@
 package sh.miles.voidcr.impl.entity;
 
 import com.google.common.base.Preconditions;
-import finalforeach.cosmicreach.GameSingletons;
-import finalforeach.cosmicreach.entities.Entity;
 import finalforeach.cosmicreach.entities.player.Player;
 import finalforeach.cosmicreach.networking.packets.MessagePacket;
 import finalforeach.cosmicreach.networking.packets.entities.PlayerPositionPacket;

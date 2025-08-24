@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/networking/server/ServerSingletons.java
 +++ b/finalforeach/cosmicreach/networking/server/ServerSingletons.java
-@@ -42,6 +_,7 @@
+@@ -45,6 +_,7 @@
  import java.util.function.Consumer;
  
  public class ServerSingletons {
@@ -8,7 +8,7 @@
     public static NettyServer SERVER;
     private static ObjectMap<NetworkIdentity, Account> netIdsToAccounts = new ObjectMap();
     private static ObjectMap<Account, NetworkIdentity> accountsToNetIds = new ObjectMap();
-@@ -109,6 +_,7 @@
+@@ -112,6 +_,7 @@
        Zone zone = player.getZone();
        zone.addPlayer(player);
        world.players.add(player);
@@ -16,15 +16,20 @@
        ArrayIterator var5 = world.players.iterator();
  
        while (var5.hasNext()) {
-@@ -165,30 +_,38 @@
+@@ -167,7 +_,8 @@
+          EntityPathfinder.processRequests();
           world.currentWorldTick++;
           if (SERVER != null) {
-             SERVER.broadcastToAll(new EndTickPacket(world.currentWorldTick));
-+            sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preUniverseEndTick(world, world.currentWorldTick); // VoidCR call pre tick end
+-            SERVER.broadcastToAll(new EndTickPacket(world.currentWorldTick));
++             sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.preUniverseEndTick(world, world.currentWorldTick); // VoidCR call pre tick end
++             SERVER.broadcastToAll(new EndTickPacket(world.currentWorldTick));
           }
        });
-       registerBlockEntityOpeners();
-       GameSingletons.postCreate();
+       registerCustomScreenInfoOpeners();
+@@ -180,32 +_,41 @@
+          ServerIdentity id = getConnection(info.player);
+          id.send(new RemoteControlScreenPacket(info));
+       });
 +      sh.miles.voidcr.impl.server.VoidServer.SERVER.load(); // VoidCR - initialize server
     }
  
@@ -54,4 +59,13 @@
 +         sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerOpenBlockScreen(info); // VoidCR call PostPlayerOpenBlockScreen
        });
        Consumer<BlockEntityScreenInfo> customUiConsumer = info -> {
-          ServerIdentity id = getConnection(info.player());
+-         ServerIdentity id = getConnection(info.player());
++          if(!sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.prePlayerOpenBlockScreen(info)) return; // VoidCR call PrePlayerOpenBlockScreen
++          ServerIdentity id = getConnection(info.player());
+          BlockEntity blockEntity = info.blockEntity();
+          id.send(new BlockEntityDataPacket(blockEntity));
+          id.send(new BlockEntityScreenPacket(blockEntity));
++          sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerOpenBlockScreen(info); // VoidCR call PostPlayerOpenBlockScreen
+       };
+       GameSingletons.registerBlockEntityScreenOpener("base:custom_ui_block_entity", customUiConsumer);
+       GameSingletons.registerBlockEntityScreenOpener("base:electric_generator", customUiConsumer);

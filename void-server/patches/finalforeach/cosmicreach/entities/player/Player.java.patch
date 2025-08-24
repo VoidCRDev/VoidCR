@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/player/Player.java
 +++ b/finalforeach/cosmicreach/entities/player/Player.java
-@@ -27,9 +_,9 @@
+@@ -28,9 +_,9 @@
     public Gamemode gamemode = Gamemode.SURVIVAL;
     public String zoneId;
     private Entity entity;
@@ -12,7 +12,7 @@
     public EquipmentContainer equipment = new EquipmentContainer();
     public boolean isSprinting;
     public boolean isProne;
-@@ -62,6 +_,8 @@
+@@ -63,6 +_,8 @@
     public void setEntity(Entity entity) {
        this.entity = entity;
        if (entity != null) {
@@ -21,7 +21,7 @@
           this.entity.localBoundingBox.set(this.standingBoundingBox);
           this.entity.viewPositionOffset.set(this.standingViewPositionOffset);
        }
-@@ -254,6 +_,11 @@
+@@ -255,6 +_,11 @@
        if (jsonData.has("inventory")) {
           try {
              this.inventory = (SlotContainer)json.readValue("inventory", SlotContainer.class, jsonData);

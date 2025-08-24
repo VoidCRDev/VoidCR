@@ -1,11 +1,11 @@
 --- a/finalforeach/cosmicreach/world/ZoneLoaders.java
 +++ b/finalforeach/cosmicreach/world/ZoneLoaders.java
-@@ -60,7 +_,7 @@
+@@ -61,7 +_,7 @@
              }
           }
  
--         if (GameSingletons.getNumberOfPlayers() == 0 && !GameSingletons.isClient || this.zoneLoaders.isEmpty()) {
-+         if (GameSingletons.getNumberOfPlayers() == 0 && finalforeach.cosmicreach.networking.server.ServerSingletons.running.get() && !GameSingletons.isClient || this.zoneLoaders.isEmpty()) { // VoidCR - better server stopping
+-         if (GameSingletonPlayers.getNumberOfPlayers() == 0 && !GameSingletons.isClient || this.zoneLoaders.isEmpty()) {
++         if (GameSingletonPlayers.getNumberOfPlayers() == 0 && finalforeach.cosmicreach.networking.server.ServerSingletons.running.get() && !GameSingletons.isClient || this.zoneLoaders.isEmpty()) { // VoidCR - better server stopping
              synchronized (worldGenThread) {
-                if (GameSingletons.getNumberOfPlayers() == 0 || this.zoneLoaders.isEmpty()) {
+                if (GameSingletonPlayers.getNumberOfPlayers() == 0 || this.zoneLoaders.isEmpty()) {
                    Iterator i$x = this.zoneLoaders.entries().iterator();

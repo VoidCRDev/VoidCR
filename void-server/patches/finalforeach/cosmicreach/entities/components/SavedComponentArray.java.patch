@@ -1,0 +1,11 @@
+--- a/finalforeach/cosmicreach/entities/components/SavedComponentArray.java
++++ b/finalforeach/cosmicreach/entities/components/SavedComponentArray.java
+@@ -28,7 +_,7 @@
+ 
+       for (int i = 0; i < newSize; i++) {
+          Class<? extends ICRBinSerializable> type = componentTypes.get(types[i]);
+-         ICRBinSerializable c = deserial.<ICRBinSerializable>readObj(Integer.toString(i), type);
++         ICRBinSerializable c = deserial.readObj(Integer.toString(i), type);
+          this.add(c);
+       }
+    }

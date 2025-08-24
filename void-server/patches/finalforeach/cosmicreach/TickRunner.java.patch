@@ -1,11 +1,11 @@
 --- a/finalforeach/cosmicreach/TickRunner.java
 +++ b/finalforeach/cosmicreach/TickRunner.java
-@@ -60,7 +_,7 @@
+@@ -62,7 +_,7 @@
  
-       if (GameSingletons.getNumberOfPlayers() == 0 && !GameSingletons.isClient) {
+       if (GameSingletonPlayers.getNumberOfPlayers() == 0 && !GameSingletons.isClient) {
           synchronized (this.thread) {
--            if (GameSingletons.getNumberOfPlayers() == 0) {
-+            if (GameSingletons.getNumberOfPlayers() == 0 && finalforeach.cosmicreach.networking.server.ServerSingletons.running.get()) {
+-            if (GameSingletonPlayers.getNumberOfPlayers() == 0) {
++            if (GameSingletonPlayers.getNumberOfPlayers() == 0 && finalforeach.cosmicreach.networking.server.ServerSingletons.running.get()) {
                 this.pauseThread();
              }
           }
