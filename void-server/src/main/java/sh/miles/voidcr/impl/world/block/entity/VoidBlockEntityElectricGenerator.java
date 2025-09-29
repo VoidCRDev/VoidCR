@@ -1,7 +1,7 @@
 package sh.miles.voidcr.impl.world.block.entity;
 
 import com.google.common.base.Preconditions;
-import finalforeach.cosmicreach.blockentities.BlockEntityElectricGenerator;
+import finalforeach.cosmicreach.blocks.blockentities.BlockEntityElectricGenerator;
 import org.jspecify.annotations.NullMarked;
 import sh.miles.voidcr.world.inventory.container.ItemContainer;
 

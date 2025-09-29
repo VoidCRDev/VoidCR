@@ -2,7 +2,7 @@ package sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity;
 
 import com.badlogic.gdx.graphics.Color;
 import com.google.common.base.Preconditions;
-import finalforeach.cosmicreach.blockentities.BlockEntitySign;
+import finalforeach.cosmicreach.blocks.blockentities.BlockEntitySign;
 import finalforeach.cosmicreach.entities.player.Player;
 import finalforeach.cosmicreach.world.Zone;
 import sh.miles.voidcr.entity.PlayerEntity;

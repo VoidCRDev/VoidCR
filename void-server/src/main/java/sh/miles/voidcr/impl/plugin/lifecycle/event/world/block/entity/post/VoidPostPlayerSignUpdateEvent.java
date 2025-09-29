@@ -1,6 +1,6 @@
 package sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.post;
 
-import finalforeach.cosmicreach.blockentities.BlockEntitySign;
+import finalforeach.cosmicreach.blocks.blockentities.BlockEntitySign;
 import finalforeach.cosmicreach.entities.player.Player;
 import sh.miles.voidcr.impl.plugin.lifecycle.event.world.block.entity.VoidPlayerSignUpdateEvent;
 import sh.miles.voidcr.plugin.lifecycle.event.LifecycleEvent;

@@ -3,8 +3,8 @@ package sh.miles.voidcr.impl.world.block.entity;
 import sh.miles.voidcr.world.block.entity.BlockEntityFurnace;
 import sh.miles.voidcr.world.inventory.container.ItemContainer;
 
-public class VoidBlockEntityFurnace extends VoidBlockEntity<finalforeach.cosmicreach.blockentities.BlockEntityFurnace> implements BlockEntityFurnace {
-    public VoidBlockEntityFurnace(final finalforeach.cosmicreach.blockentities.BlockEntityFurnace mirror) {
+public class VoidBlockEntityFurnace extends VoidBlockEntity<finalforeach.cosmicreach.blocks.blockentities.BlockEntityFurnace> implements BlockEntityFurnace {
+    public VoidBlockEntityFurnace(final finalforeach.cosmicreach.blocks.blockentities.BlockEntityFurnace mirror) {
         super(mirror);
     }
 
@@ -25,7 +25,7 @@ public class VoidBlockEntityFurnace extends VoidBlockEntity<finalforeach.cosmicr
 
     @Override
     public int getMaxProgressTicks() {
-        return finalforeach.cosmicreach.blockentities.BlockEntityFurnace.MAX_PROGRESS_TICKS;
+        return finalforeach.cosmicreach.blocks.blockentities.BlockEntityFurnace.MAX_PROGRESS_TICKS;
     }
 
     @Override

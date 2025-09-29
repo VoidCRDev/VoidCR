@@ -120,6 +120,21 @@ public interface ItemTypes {
     ItemType PICKAXE_STONE = get("pickaxe_stone");
 
     /**
+     * Generated {@link ItemType} with the id "base:remote_control"
+     */
+    ItemType REMOTE_CONTROL = get("remote_control");
+
+    /**
+     * Generated {@link ItemType} with the id "base:revolver"
+     */
+    ItemType REVOLVER = get("revolver");
+
+    /**
+     * Generated {@link ItemType} with the id "base:rifle"
+     */
+    ItemType RIFLE = get("rifle");
+
+    /**
      * Generated {@link ItemType} with the id "base:rubber_ball"
      */
     ItemType RUBBER_BALL = get("rubber_ball");

@@ -1,14 +1,5 @@
 --- a/finalforeach/cosmicreach/networking/netty/NettyServer.java
 +++ b/finalforeach/cosmicreach/networking/netty/NettyServer.java
-@@ -50,7 +_,7 @@
-          if (account != null) {
-             Logger.info(account.getUsername() + ": " + messageText);
-          } else {
--            Logger.info("\n" + messageText);
-+            Logger.info(messageText); // VoidCR - better logging
-          }
-       }
-    };
 @@ -89,6 +_,7 @@
                 .option(ChannelOption.SO_BACKLOG, 128))
              .childOption(ChannelOption.SO_KEEPALIVE, true);

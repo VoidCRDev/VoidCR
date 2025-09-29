@@ -1,10 +1,10 @@
 --- a/finalforeach/cosmicreach/singletons/GameSingletons.java
 +++ b/finalforeach/cosmicreach/singletons/GameSingletons.java
-@@ -179,6 +_,6 @@
+@@ -183,6 +_,6 @@
     public static <T extends CustomScreenInfoRemoteControl> void registerCustomScreenOpener(
        Class<T> clazz, Consumer<T> info
     ) {
 -      infoScreenOpeners.put(clazz, info);
-+      infoScreenOpeners.put(clazz, (Consumer<CustomScreenInfoRemoteControl>) info);
++      infoScreenOpeners.put(clazz, (Consumer<CustomScreenInfoRemoteControl>) info); // VoidCR - decompile fix
     }
  }

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 import finalforeach.cosmicreach.BlockEntityScreenInfo;
 import finalforeach.cosmicreach.accounts.Account;
-import finalforeach.cosmicreach.blockentities.BlockEntitySign;
+import finalforeach.cosmicreach.blocks.blockentities.BlockEntitySign;
 import finalforeach.cosmicreach.blocks.BlockPosition;
 import finalforeach.cosmicreach.blocks.BlockState;
 import finalforeach.cosmicreach.entities.Entity;

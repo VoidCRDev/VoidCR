@@ -54,6 +54,11 @@ public interface EntityTypes {
      */
     EntityType ENTITY_ITEM = get("entity_item");
 
+    /**
+     * Generated {@link EntityType} with the id "base:bullet_projectile"
+     */
+    EntityType BULLET_PROJECTILE = get("bullet_projectile");
+
     private static EntityType get(String key) {
         return Registries.ENTITY.get(NamedKey.cosmicReach(key));
     }

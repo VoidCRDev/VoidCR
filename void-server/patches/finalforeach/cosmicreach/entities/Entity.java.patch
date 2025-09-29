@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/entities/Entity.java
 +++ b/finalforeach/cosmicreach/entities/Entity.java
-@@ -54,6 +_,10 @@
+@@ -56,6 +_,10 @@
     private static final BlockPosition tmpBlockPos1 = new BlockPosition(null, 0, 0, 0);
     private static final BlockPosition tmpBlockPos2 = new BlockPosition(null, 0, 0, 0);
     private static EntityPositionPacket positionPacket = new EntityPositionPacket();
@@ -11,7 +11,7 @@
     @CRBSerialized
     public EntityUniqueId uniqueId = EntityUniqueId.getNew();
     @CRBSerialized
-@@ -181,11 +_,21 @@
+@@ -183,11 +_,21 @@
     }
  
     public boolean recentlyHit() {
@@ -35,7 +35,7 @@
           if (ServerSingletons.SERVER != null && damageSource instanceof Entity entityDamageSource) {
              ServerSingletons.SERVER.broadcast(this.zone, new HitEntityPacket(this, entityDamageSource, amount));
           }
-@@ -193,9 +_,13 @@
+@@ -195,9 +_,13 @@
           if (amount < 0.0F) {
              this.hitpoints = Math.min(this.hitpoints - amount, this.maxHitpoints);
           } else if (this.getPendingDamage() == 0.0F && !this.recentlyHit()) {
@@ -49,7 +49,7 @@
        }
     }
  
-@@ -536,6 +_,10 @@
+@@ -550,6 +_,10 @@
     }
  
     public void updateConstraints(Zone zone, Vector3 targetPosition) {
@@ -60,7 +60,7 @@
        float floorFriction = 0.0F;
        this.tmpEntityBoundingBox.set(this.localBoundingBox);
        this.tmpEntityBoundingBox.min.add(this.position);
-@@ -962,6 +_,7 @@
+@@ -978,6 +_,7 @@
        }
  
        EntityUtils.updateEntityChunk(zone, this);

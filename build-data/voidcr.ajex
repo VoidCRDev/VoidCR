@@ -6,25 +6,29 @@ public finalforeach/cosmicreach/chat/commands/Command REGISTERED_ALIAS_COMMANDS
 public finalforeach/cosmicreach/chat/commands/Command REGISTERED_COMMAND_ALIAS_LIST
 public finalforeach/cosmicreach/chat/commands/Command args
 
-public finalforeach/cosmicreach/blockentities/BlockEntityDispenser shootDispenser()V
-public finalforeach/cosmicreach/blockentities/BlockEntityDispenser shootDispenserNow()V
-public finalforeach/cosmicreach/blockentities/BlockEntityDispenser shootPending
-public finalforeach/cosmicreach/blockentities/BlockEntityElectricFurnace progressTicks
-public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator powerAmountJoules
-public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator maxFuelTicks
-public finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator fuelTicks
-public finalforeach/cosmicreach/blockentities/BlockEntityFurnace progressTicks
-public finalforeach/cosmicreach/blockentities/BlockEntityFurnace maxFuelTicks
-public finalforeach/cosmicreach/blockentities/BlockEntityFurnace fuelTicks
-public finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter willShoot
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityDispenser shootDispenser()V
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityDispenser shootDispenserNow()V
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityDispenser shootPending
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityElectricFurnace progressTicks
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityElectricGenerator powerAmountJoules
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityElectricGenerator maxFuelTicks
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityElectricGenerator fuelTicks
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityFurnace progressTicks
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityFurnace maxFuelTicks
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityFurnace fuelTicks
+public finalforeach/cosmicreach/blocks/blockentities/BlockEntityLaserEmitter willShoot
 
 public finalforeach/cosmicreach/entities/Entity sightRange
 public finalforeach/cosmicreach/entities/EntityFlameProjectile radius
 public finalforeach/cosmicreach/entities/EntityFlameProjectile sourceEntityId
 public finalforeach/cosmicreach/entities/EntityFlameProjectile strength
-public finalforeach/cosmicreach/entities/EntityLaserProjectile radius
-public finalforeach/cosmicreach/entities/EntityLaserProjectile sourceEntityId
-public finalforeach/cosmicreach/entities/EntityLaserProjectile strength
+
+public finalforeach/cosmicreach/entities/projectiles/EntityProjectileBullet strength
+public finalforeach/cosmicreach/entities/projectiles/EntityProjectileBullet sourceEntityId
+public finalforeach/cosmicreach/entities/projectiles/EntityProjectileBullet radius
+public finalforeach/cosmicreach/entities/projectiles/EntityProjectileLaser radius
+public finalforeach/cosmicreach/entities/projectiles/EntityProjectileLaser sourceEntityId
+public finalforeach/cosmicreach/entities/projectiles/EntityProjectileLaser strength
 
 public finalforeach/cosmicreach/items/ItemStack durability
 
@@ -40,7 +44,8 @@ public finalforeach/cosmicreach/world/Chunk blockEntities
 sh/miles/voidcr/impl/entity/VoidDroneTrapEntity finalforeach/cosmicreach/entities/mobs/MobDroneTrap
 sh/miles/voidcr/impl/entity/VoidEntity finalforeach/cosmicreach/entities/Entity
 sh/miles/voidcr/impl/entity/VoidFlameProjectileEntity finalforeach/cosmicreach/entities/EntityFlameProjectile
-sh/miles/voidcr/impl/entity/VoidLaserProjectileEntity finalforeach/cosmicreach/entities/EntityLaserProjectile
+sh/miles/voidcr/impl/entity/VoidBulletProjectileEntity finalforeach/cosmicreach/entities/projectiles/EntityProjectileBullet
+sh/miles/voidcr/impl/entity/VoidLaserProjectileEntity finalforeach/cosmicreach/entities/projectiles/EntityProjectileLaser
 sh/miles/voidcr/impl/entity/VoidPlayerEntity finalforeach/cosmicreach/entities/player/PlayerEntity
 
 sh/miles/voidcr/impl/server/network/VoidAccount finalforeach/cosmicreach/accounts/Account
@@ -51,11 +56,11 @@ sh/miles/voidcr/impl/world/VoidWorld finalforeach/cosmicreach/world/Zone
 
 sh/miles/voidcr/impl/world/block/VoidBlockState finalforeach/cosmicreach/blocks/BlockState
 
-# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityCrate finalforeach/cosmicreach/blockentities/BlockEntityItemContainer
-# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityFurnace finalforeach/cosmicreach/blockentities/BlockEntityFurnace
-# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityElectricGenerator finalforeach/cosmicreach/blockentities/BlockEntityElectricGenerator
-# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityLaserEmitter finalforeach/cosmicreach/blockentities/BlockEntityLaserEmitter
-# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntitySign finalforeach/cosmicreach/blockentities/BlockEntitySign
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityCrate finalforeach/cosmicreach/blocks/blockentities/BlockEntityItemContainer
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityFurnace finalforeach/cosmicreach/blocks/blockentities/BlockEntityFurnace
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityElectricGenerator finalforeach/cosmicreach/blocks/blockentities/BlockEntityElectricGenerator
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntityLaserEmitter finalforeach/cosmicreach/blocks/blockentities/BlockEntityLaserEmitter
+# sh/miles/voidcr/impl/world/block/entity/VoidBlockEntitySign finalforeach/cosmicreach/blocks/blockentities/BlockEntitySign
 
 sh/miles/voidcr/impl/world/inventory/container/VoidItemContainer finalforeach/cosmicreach/items/containers/SlotContainer
 

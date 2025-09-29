@@ -120,6 +120,11 @@ public interface BlockTypes {
     BlockType ICE = get("ice");
 
     /**
+     * Generated {@link BlockType} with the id "base:ladder_iron"
+     */
+    BlockType LADDER_IRON = get("ladder_iron");
+
+    /**
      * Generated {@link BlockType} with the id "base:laser_emitter"
      */
     BlockType LASER_EMITTER = get("laser_emitter");
@@ -203,6 +208,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:piston"
      */
     BlockType PISTON = get("piston");
+
+    /**
+     * Generated {@link BlockType} with the id "base:pixel_display"
+     */
+    BlockType PIXEL_DISPLAY = get("pixel_display");
 
     /**
      * Generated {@link BlockType} with the id "base:rubber_block"
@@ -293,6 +303,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:wood_planks"
      */
     BlockType WOOD_PLANKS = get("wood_planks");
+
+    /**
+     * Generated {@link BlockType} with the id "base:workbench"
+     */
+    BlockType WORKBENCH = get("workbench");
 
     private static BlockType get(String key) {
         return Registries.BLOCK.get(NamedKey.cosmicReach(key));

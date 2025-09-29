@@ -1,8 +1,8 @@
 package sh.miles.voidcr.impl.world.position;
 
 import com.google.common.base.Preconditions;
-import finalforeach.cosmicreach.blockentities.BlockEntity;
 import finalforeach.cosmicreach.blocks.BlockPosition;
+import finalforeach.cosmicreach.blocks.blockentities.BlockEntity;
 import finalforeach.cosmicreach.savelib.crbin.ICRBinSerializable;
 import finalforeach.cosmicreach.world.Zone;
 import sh.miles.voidcr.impl.util.VoidMagicMethods;

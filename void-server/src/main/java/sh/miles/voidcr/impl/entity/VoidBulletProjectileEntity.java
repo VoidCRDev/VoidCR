@@ -1,14 +1,14 @@
 package sh.miles.voidcr.impl.entity;
 
 import com.google.common.base.Preconditions;
-import finalforeach.cosmicreach.entities.projectiles.EntityProjectileLaser;
+import finalforeach.cosmicreach.entities.projectiles.EntityProjectileBullet;
 import org.jspecify.annotations.Nullable;
 import sh.miles.voidcr.entity.EntityIdentifier;
 import sh.miles.voidcr.entity.ProjectileEntity;
 
-public class VoidLaserProjectileEntity extends VoidEntity implements ProjectileEntity {
+public class VoidBulletProjectileEntity extends VoidEntity implements ProjectileEntity {
 
-    public VoidLaserProjectileEntity(final EntityProjectileLaser mirror) {
+    public VoidBulletProjectileEntity(final EntityProjectileBullet mirror) {
         super(mirror);
     }
 
@@ -35,7 +35,7 @@ public class VoidLaserProjectileEntity extends VoidEntity implements ProjectileE
     }
 
     @Override
-    public EntityProjectileLaser getMirror() {
-        return (EntityProjectileLaser) super.mirror;
+    public EntityProjectileBullet getMirror() {
+        return (EntityProjectileBullet) super.mirror;
     }
 }

@@ -1,0 +1,11 @@
+--- a/finalforeach/cosmicreach/gameevents/itemevents/ItemEventTrigger.java
++++ b/finalforeach/cosmicreach/gameevents/itemevents/ItemEventTrigger.java
+@@ -18,7 +_,7 @@
+          throw new RuntimeException("Could not find action for id: " + actionId);
+       } else {
+          try {
+-            this.action = (IGameEventAction)json.readValue(actionClass, jsonData);
++            this.action = (IItemAction) json.readValue(actionClass, jsonData); // VoidCR - decompile fix
+             this.condition = null;
+             JsonValue rootCondition = jsonData.get("if");
+             if (rootCondition != null) {

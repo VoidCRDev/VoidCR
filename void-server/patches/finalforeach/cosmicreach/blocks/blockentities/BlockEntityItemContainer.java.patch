@@ -1,5 +1,5 @@
---- a/finalforeach/cosmicreach/blockentities/BlockEntityItemContainer.java
-+++ b/finalforeach/cosmicreach/blockentities/BlockEntityItemContainer.java
+--- a/finalforeach/cosmicreach/blocks/blockentities/BlockEntityItemContainer.java
++++ b/finalforeach/cosmicreach/blocks/blockentities/BlockEntityItemContainer.java
 @@ -13,6 +_,12 @@
  import java.util.function.Predicate;
  

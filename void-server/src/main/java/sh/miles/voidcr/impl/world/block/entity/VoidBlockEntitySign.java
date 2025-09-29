@@ -6,8 +6,8 @@ import finalforeach.cosmicreach.networking.packets.blockentities.SignsEntityPack
 import finalforeach.cosmicreach.networking.server.ServerSingletons;
 import sh.miles.voidcr.world.block.entity.BlockEntitySign;
 
-public class VoidBlockEntitySign extends VoidBlockEntity<finalforeach.cosmicreach.blockentities.BlockEntitySign> implements BlockEntitySign {
-    public VoidBlockEntitySign(final finalforeach.cosmicreach.blockentities.BlockEntitySign mirror) {
+public class VoidBlockEntitySign extends VoidBlockEntity<finalforeach.cosmicreach.blocks.blockentities.BlockEntitySign> implements BlockEntitySign {
+    public VoidBlockEntitySign(final finalforeach.cosmicreach.blocks.blockentities.BlockEntitySign mirror) {
         super(mirror);
     }
 

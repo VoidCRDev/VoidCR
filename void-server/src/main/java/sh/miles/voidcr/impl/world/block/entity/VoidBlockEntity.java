@@ -6,7 +6,7 @@ import sh.miles.voidcr.world.World;
 import sh.miles.voidcr.world.block.entity.BlockEntity;
 import sh.miles.voidcr.world.position.BlockPos;
 
-public class VoidBlockEntity<T extends finalforeach.cosmicreach.blockentities.BlockEntity> implements BlockEntity {
+public class VoidBlockEntity<T extends finalforeach.cosmicreach.blocks.blockentities.BlockEntity> implements BlockEntity {
 
     protected final T mirror;
 

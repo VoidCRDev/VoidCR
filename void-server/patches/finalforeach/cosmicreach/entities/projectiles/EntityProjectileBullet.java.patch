@@ -1,10 +1,10 @@
---- a/finalforeach/cosmicreach/entities/EntityLaserProjectile.java
-+++ b/finalforeach/cosmicreach/entities/EntityLaserProjectile.java
-@@ -150,6 +_,7 @@
+--- a/finalforeach/cosmicreach/entities/projectiles/EntityProjectileBullet.java
++++ b/finalforeach/cosmicreach/entities/projectiles/EntityProjectileBullet.java
+@@ -142,6 +_,7 @@
                          while (var13.hasNext()) {
                             BoundingBox bb = (BoundingBox)var13.next();
                             if (bb.intersects(this.tmpEntityBoundingBox)) {
-+                              this.age = maxAge; // VoidCR - kill laser projectile after direct hit
++                               this.age = maxAge; // VoidCR - kill laser projectile after direct hit
                                float dist = GameMath.distanceBoundingBoxPoint(bb, this.lastPosition);
                                float len = this.lastPosition.dst(targetPosition);
                                if (len == 0.0F || dist == 0.0F) {

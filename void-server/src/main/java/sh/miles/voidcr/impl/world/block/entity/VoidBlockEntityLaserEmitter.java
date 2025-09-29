@@ -2,8 +2,8 @@ package sh.miles.voidcr.impl.world.block.entity;
 
 import sh.miles.voidcr.world.block.entity.BlockEntityLaserEmitter;
 
-public class VoidBlockEntityLaserEmitter extends VoidBlockEntity<finalforeach.cosmicreach.blockentities.BlockEntityLaserEmitter> implements BlockEntityLaserEmitter {
-    public VoidBlockEntityLaserEmitter(final finalforeach.cosmicreach.blockentities.BlockEntityLaserEmitter mirror) {
+public class VoidBlockEntityLaserEmitter extends VoidBlockEntity<finalforeach.cosmicreach.blocks.blockentities.BlockEntityLaserEmitter> implements BlockEntityLaserEmitter {
+    public VoidBlockEntityLaserEmitter(final finalforeach.cosmicreach.blocks.blockentities.BlockEntityLaserEmitter mirror) {
         super(mirror);
     }
 

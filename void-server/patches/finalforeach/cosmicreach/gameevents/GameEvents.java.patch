@@ -1,0 +1,20 @@
+--- a/finalforeach/cosmicreach/gameevents/GameEvents.java
++++ b/finalforeach/cosmicreach/gameevents/GameEvents.java
+@@ -29,7 +_,7 @@
+       while (var3.hasNext()) {
+          Entry<String, T[]> ts = (Entry<String, T[]>)var3.next();
+ 
+-         for (T t : (GameEventTrigger[])ts.value) {
++         for (T t : ts.value) { // VoidCR - decompile fix
+             t.setTriggerName((String)ts.key);
+          }
+       }
+@@ -55,7 +_,7 @@
+                while (var3.hasNext()) {
+                   Entry<String, T[]> t = (Entry<String, T[]>)var3.next();
+                   if (!this.triggers.containsKey((String)t.key)) {
+-                     this.triggers.put((String)t.key, (GameEventTrigger[])t.value);
++                     this.triggers.put((String)t.key, (T[])t.value); // VoidCR - decompile fix
+                   }
+                }
+             }
