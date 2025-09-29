@@ -68,4 +68,4 @@
 +          sh.miles.voidcr.impl.plugin.lifecycle.event.VoidEventFactory.postPlayerOpenBlockScreen(info); // VoidCR call PostPlayerOpenBlockScreen
        };
        GameSingletons.registerBlockEntityScreenOpener("base:custom_ui_block_entity", customUiConsumer);
-       GameSingletons.registerBlockEntityScreenOpener("base:electric_generator", customUiConsumer);
+    }
