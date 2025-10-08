@@ -1,6 +1,6 @@
 --- a/finalforeach/cosmicreach/items/ItemStack.java
 +++ b/finalforeach/cosmicreach/items/ItemStack.java
-@@ -19,6 +_,11 @@
+@@ -20,6 +_,11 @@
  import sh.miles.voidcr.impl.world.inventory.item.VoidItemStack;
  
  public class ItemStack implements ICRBinSerializable {

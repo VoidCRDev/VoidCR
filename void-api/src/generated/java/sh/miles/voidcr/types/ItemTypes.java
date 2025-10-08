@@ -105,6 +105,11 @@ public interface ItemTypes {
     ItemType MICROCHIP = get("microchip");
 
     /**
+     * Generated {@link ItemType} with the id "base:naphtha"
+     */
+    ItemType NAPHTHA = get("naphtha");
+
+    /**
      * Generated {@link ItemType} with the id "base:pickaxe_aluminium"
      */
     ItemType PICKAXE_ALUMINIUM = get("pickaxe_aluminium");
@@ -118,6 +123,11 @@ public interface ItemTypes {
      * Generated {@link ItemType} with the id "base:pickaxe_stone"
      */
     ItemType PICKAXE_STONE = get("pickaxe_stone");
+
+    /**
+     * Generated {@link ItemType} with the id "base:plastic_pellets"
+     */
+    ItemType PLASTIC_PELLETS = get("plastic_pellets");
 
     /**
      * Generated {@link ItemType} with the id "base:remote_control"

@@ -110,6 +110,11 @@ public interface BlockTypes {
     BlockType GRASS = get("grass");
 
     /**
+     * Generated {@link BlockType} with the id "base:grass_blades"
+     */
+    BlockType GRASS_BLADES = get("grass_blades");
+
+    /**
      * Generated {@link BlockType} with the id "base:hazard"
      */
     BlockType HAZARD = get("hazard");
@@ -213,6 +218,11 @@ public interface BlockTypes {
      * Generated {@link BlockType} with the id "base:pixel_display"
      */
     BlockType PIXEL_DISPLAY = get("pixel_display");
+
+    /**
+     * Generated {@link BlockType} with the id "base:plastic_block"
+     */
+    BlockType PLASTIC_BLOCK = get("plastic_block");
 
     /**
      * Generated {@link BlockType} with the id "base:rubber_block"
